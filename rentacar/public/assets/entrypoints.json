@@ -1,0 +1,9 @@
+{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "http://localhost:60978/assets/app.js"
+      ]
+    }
+  }
+}
