@@ -1,4 +1,8 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/info', 'UsersController.info')
+Route.get('/user', 'UsersController.user')
+
+// daha sonra acilabilir
+//Route.post('/user', 'UsersController.create')
+//Route.put('/user', 'UsersController.update')
