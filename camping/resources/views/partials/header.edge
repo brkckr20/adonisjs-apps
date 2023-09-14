@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Camping</title>
+  @entryPointScripts('app')
+  @entryPointStyles('app')
+</head>
+<body>
+<header class="h-[86px] flex justify-between items-center px-6">
+  <div class="flex gap-x-2 items-end bg-white">
+    <div class="text-2xl font-semibold"><a href="/">Camping</a></div>
+    <div class="ml-10 pr-4">
+      <ul class="flex gap-20">
+        <li class="uppercase hover:border-b hover:border-black duration-300 px-4 {{title === 'home' ? 'border-b border-black' : ''}}"><a href="/">home</a></li>
+        <li class="uppercase hover:border-b hover:border-black duration-300 px-4 {{title === 'pages' ? 'border-b border-black' : ''}}"><a href="/pages">pages</a></li>
+        <li class="uppercase hover:border-b hover:border-black duration-300 px-4 {{title === 'gallery' ? 'border-b border-black' : ''}}"><a href="/gallery">gallery</a></li>
+        <li class="uppercase hover:border-b hover:border-black duration-300 px-4 {{title === 'blog' ? 'border-b border-black' : ''}}"><a href="/blog">blog</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="flex gap-2 divide-x divide-black">
+    <div class="pl-2">
+      29
+    </div>
+    <div class="px-2">
+      signin
+    </div>
+    <div class="pl-2">
+      en
+    </div>
+  </div>
+</header>
