@@ -21,7 +21,7 @@ const Home = () => {
   if (isLoading)
     return (
       <div className="w-full h-full flex items-center justify-center">
-        <Loader loading={isLoading} />
+        <Loader />
       </div>
     );
   return (
