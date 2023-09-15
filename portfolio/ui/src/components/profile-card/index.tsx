@@ -1,8 +1,8 @@
 import { useQuery } from "react-query";
 import axios from "axios";
-import Icon from "../../icons";
 import { API_URL } from "../../config";
 import { SocialMedia } from "../social-media-list";
+import Button from "../button";
 
 export const ProfileCard = () => {
   const { isLoading, data } = useQuery("userInfo", () =>
@@ -16,8 +16,8 @@ export const ProfileCard = () => {
   }
 
   return (
-    <div className="h-full flex flex-col items-center justify-center shrink-0 fixed ">
-      <div className="p-8 border-[.5px] border-gray-600 rounded-lg">
+    <div className="h-full flex flex-col items-center justify-center shrink-0 fixed">
+      <div className="px-10 py-12 border-[.5px] border-gray-600 rounded-3xl">
         <div className="flex items-start justify-between gap-8 mb-8">
           <div>
             <h1 className="text-4xl font-semibold">{data?.user.ad_soyad}</h1>
@@ -45,22 +45,9 @@ export const ProfileCard = () => {
             {data.socialMediaList.map((item: any) => (
               <SocialMedia key={item.id} url={item.url} iconName={item.icon} />
             ))}
-            {/* <SocialMedia iconName="instagram" />
-            <SocialMedia iconName="facebook" />
-            <SocialMedia iconName="twitter" />
-            <SocialMedia iconName="letter" /> */}
           </div>
           <div>
-            <button
-              className="bg-primary text-black w-full py-3 mt-2 rounded-full border border-primary hover:bg-transparent hover:text-primary duration-200
-                          flex items-center justify-center gap-2 group"
-            >
-              <Icon
-                name="letter"
-                className="group-hover:fill-primary duration-200"
-              />
-              <span>HIRE ME!</span>
-            </button>
+            <Button isIcon={true} />
           </div>
         </div>
       </div>
