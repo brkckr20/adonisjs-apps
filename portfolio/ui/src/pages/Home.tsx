@@ -4,9 +4,9 @@ import Icon from "../icons";
 
 const Home = () => {
   return (
-    <div className="mb-28">
+    <div className="mb-28" id="home">
       <div>
-        <PageName icon="home" title="INTRODUCE" size={24} />
+        <PageName icon="home" title="INTRODUCE" size={24} link="#home" />
         <div className="mt-12">
           <h1 className="text-[78px] font-light leading-[80px]">
             Say Hi from <span className="text-primary">Drake</span>, Webflow

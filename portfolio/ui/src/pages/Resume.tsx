@@ -1,21 +1,18 @@
+import EducationExperienceCard from "../components/education-experience-card/index";
 import PageName from "../components/page-name";
 
 const Resume = () => {
   return (
-    <div className="mb-28">
+    <div className="mb-28" id="resume">
       <div>
-        <PageName icon="about" title="ABOUT" size={24} />
+        <PageName icon="about" title="RESUME" size={24} link="#resume" />
         <div className="mt-12">
-          <h1 className="text-[78px] font-light leading-[80px]">
+          <h1 className="text-5xl font-light">
             Education &<span className="text-primary"> Experience </span>
           </h1>
           <h2 className="text-secondary max-w-lg my-10">
-            Since beginning my journey as a freelance designer nearly 8 years
-            ago, I've done remote work for agencies, consulted for startups, and
-            collaborated with talented people to create digital products for
-            both business and consumer use. I'm quietly confident, naturally
-            curious, and perpetually working on improving my chopsone design
-            problem at a time.
+            <EducationExperienceCard />
+            <EducationExperienceCard />
           </h2>
         </div>
       </div>

@@ -2,11 +2,11 @@ import PageName from "../components/page-name";
 
 const About = () => {
   return (
-    <div className="mb-28">
+    <div className="mb-28" id="about">
       <div>
-        <PageName icon="about" title="ABOUT" size={24} />
+        <PageName icon="about" title="ABOUT" size={24} link="#about" />
         <div className="mt-12">
-          <h1 className="text-[78px] font-light leading-[80px]">
+          <h1 className="text-5xl font-light">
             Every great design begin with an even{" "}
             <span className="text-primary">better story</span>
           </h1>
