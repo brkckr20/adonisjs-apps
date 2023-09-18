@@ -20,11 +20,7 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', async ({ view }) => {
-  return view.render('welcome', {
-    title : "home"
-  })
-})
+Route.get('/', 'HomeController.index')
 
 Route.get('/pages', async ({ view }) => {
   return view.render('pages' , {
@@ -43,3 +39,6 @@ Route.get('/blog', async ({ view }) => {
     title : "blog"
   })
 })
+
+Route.get("/slider", 'SlidersController.index');
+Route.post("/slider", 'SlidersController.create');

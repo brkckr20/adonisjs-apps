@@ -1,0 +1,30 @@
+@include('partials/header')
+
+<!-- Slider main container -->
+
+<div class="swiper">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    @each(slide in sliders)
+    <div class="swiper-slide">
+      <h1>{{slide.baslik}}</h1>
+      <h1>{{slide.aciklama}}</h1>
+      <a href="{{slide.link}}">{{slide.link}}</a>
+      <img src="{{ slide.resim }}" alt={{slide.baslik}}>
+
+    </div>
+    @end
+  </div>
+  <!-- If we need pagination -->
+  <div class="swiper-pagination"></div>
+
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+
+  <!-- If we need scrollbar -->
+  <div class="swiper-scrollbar"></div>
+</div>
+
+@include('partials/footer')
+
