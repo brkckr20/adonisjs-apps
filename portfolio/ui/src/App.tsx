@@ -2,6 +2,7 @@ import { ProfileCard } from "./components/profile-card";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Resume from "./pages/Resume";
+import RightMenu from "./components/right-menu";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
         </div>
       </div>
       <div>
-        <div>3</div>
+        <RightMenu />
       </div>
     </div>
   );
