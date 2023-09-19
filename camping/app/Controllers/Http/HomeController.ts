@@ -1,12 +1,15 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Slider from 'App/Models/Slider';
+import CampType from 'App/Models/CampType';
 
 export default class HomeController {
   public async index({ view }: HttpContextContract) {
     const sliders = await Slider.all();
+    const campTypes = await CampType.all();
     return view.render('home', {
       title: "home",
-      sliders : sliders
+      sliders: sliders,
+      campTypes: campTypes,
     })
   }
 

@@ -42,3 +42,5 @@ Route.get('/blog', async ({ view }) => {
 
 Route.get("/slider", 'SlidersController.index');
 Route.post("/slider", 'SlidersController.create');
+
+Route.post("/camp-type", 'CampTypesController.create');

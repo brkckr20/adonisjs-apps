@@ -2,16 +2,28 @@
 
 <!-- Slider main container -->
 
-<div class="swiper">
+<div class="swiper  relative">
   <!-- Additional required wrapper -->
   <div class="swiper-wrapper">
     @each(slide in sliders)
     <div class="swiper-slide">
-      <h1>{{slide.baslik}}</h1>
-      <h1>{{slide.aciklama}}</h1>
-      <a href="{{slide.link}}">{{slide.link}}</a>
-      <img src="{{ slide.resim }}" alt={{slide.baslik}}>
+      <div class="cursor-pointer">
 
+        <div class="absolute top-1/2 left-1/2 filter border shadow bg-white bg-opacity-50 p-10 text-black/80 -translate-x-1/2 -translate-y-1/2">
+          <h1 class="title text-2xl" data-swiper-parallax="-100">{{slide.baslik}}</h1>
+
+          <h1 class=" text-7xl my-10">{{slide.aciklama}}</h1>
+          <a class="flex items-center gap-3" href="{{slide.link}}"><span>Watch a video</span>  <span class="border p-2 border-black rounded-full flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+            </svg>
+          </span>
+          </a>
+        </div>
+        <img src="{{ slide.resim }}" class="h-full object-contain w-full" alt={{slide.baslik}}>
+
+
+      </div>
     </div>
     @end
   </div>
@@ -25,6 +37,28 @@
   <!-- If we need scrollbar -->
   <div class="swiper-scrollbar"></div>
 </div>
+
+<div>
+  <h1>About</h1>
+  <h2>Welcome to Wonderer
+    Camping Ground</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</p>
+<div>
+  <ul>
+  @each(camp in campTypes)
+    <li>
+      <span>
+        {{ camp.name }}
+      </span>
+      <span id="svgContainer">
+        {{ camp.icon }}
+      </span>
+    </li>
+  @end
+</ul>
+</div>
+</div>
+
 
 @include('partials/footer')
 
