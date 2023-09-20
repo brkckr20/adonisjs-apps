@@ -1,12 +1,17 @@
 import { Tooltip } from "react-tooltip";
 
 import Icon from "../../icons";
+import React from "react";
 
-const RightMenu = () => {
+interface IProps {
+  menuOpen: () => void;
+}
+
+const RightMenu: React.FC<IProps> = ({ menuOpen }) => {
   return (
     <div className="flex flex-col h-screen pt-16 ml-20">
       <div>
-        <button>
+        <button onClick={menuOpen}>
           <Icon name="mobileMenu" className="fill-white" size={28} />
         </button>
       </div>

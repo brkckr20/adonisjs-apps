@@ -1,10 +1,21 @@
+import { useState } from "react";
+import Drawer from "react-modern-drawer";
+
 import { ProfileCard } from "./components/profile-card";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Resume from "./pages/Resume";
 import RightMenu from "./components/right-menu";
 
+import "react-modern-drawer/dist/index.css";
+import { MobileMenu } from "./components/mobile-menu";
+
 function App() {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleDrawer = () => {
+    setIsOpen((prevState) => !prevState);
+  };
+
   return (
     <div className="bg-info inter text-white flex px-5">
       <div className="relative">
@@ -18,8 +29,17 @@ function App() {
         </div>
       </div>
       <div>
-        <RightMenu />
+        <RightMenu menuOpen={toggleDrawer} />
       </div>
+      <Drawer
+        open={isOpen}
+        onClose={toggleDrawer}
+        direction="right"
+        className="!bg-info"
+        size={300}
+      >
+        <MobileMenu />
+      </Drawer>
     </div>
   );
 }
