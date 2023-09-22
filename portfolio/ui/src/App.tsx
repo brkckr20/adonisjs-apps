@@ -9,6 +9,7 @@ import RightMenu from "./components/right-menu";
 
 import "react-modern-drawer/dist/index.css";
 import { MobileMenu } from "./components/mobile-menu";
+import Services from "./pages/Services";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,6 +27,7 @@ function App() {
           <Home />
           <About />
           <Resume />
+          <Services />
         </div>
       </div>
       <div>

@@ -1,6 +1,16 @@
-const EducationExperienceCard = () => {
+import React from "react";
+
+interface IProps {
+  tip: string;
+}
+
+const EducationExperienceCard: React.FC<IProps> = ({ tip }) => {
   return (
-    <div className="pl-12 border-l border-primary my-8 ">
+    <div
+      className={`pl-12 ${
+        tip === "iş" ? "border-l" : "border-r"
+      } border-primary my-8 `}
+    >
       {" "}
       {/* border-r -> komponent durumuna göre bir sağda ve bir solda olacak */}
       <div>

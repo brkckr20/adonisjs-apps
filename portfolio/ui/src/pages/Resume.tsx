@@ -11,8 +11,8 @@ const Resume = () => {
             Education &<span className="text-primary"> Experience </span>
           </h1>
           <h2 className="text-secondary max-w-lg my-10">
-            <EducationExperienceCard />
-            <EducationExperienceCard />
+            <EducationExperienceCard tip="iş" />
+            <EducationExperienceCard tip="eğitim" />
           </h2>
         </div>
       </div>
