@@ -7,10 +7,11 @@ const Services = () => {
       <div>
         <PageName icon="resume" title="RESUME" size={24} link="#resume" />
         <div className="mt-12">
-          <h1 className="text-5xl font-light">
+          <h1 className="text-5xl font-light mb-5">
             My <span className="text-primary"> Specializations </span>
           </h1>
           <div className="">
+            <ServicesCard />
             <ServicesCard />
           </div>
         </div>

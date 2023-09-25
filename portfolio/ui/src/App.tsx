@@ -23,7 +23,7 @@ function App() {
         <ProfileCard />
       </div>
       <div className="w-full ml-[382px] pt-16 h-full">
-        <div className="pl-[330px]">
+        <div className="pl-[330px] max-w-6xl">
           <Home />
           <About />
           <Resume />

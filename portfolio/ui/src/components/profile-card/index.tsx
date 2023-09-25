@@ -3,8 +3,12 @@ import axios from "axios";
 import { API_URL } from "../../config";
 import { SocialMedia } from "../social-media-list";
 import Button from "../button";
+import { RootState } from "../../redux/store";
+import { useSelector } from "react-redux";
 
 export const ProfileCard = () => {
+  const user = useSelector((state: RootState) => state.user);
+
   const { isLoading, data } = useQuery("userInfo", () =>
     axios.get(`${API_URL}/user`).then((response) => {
       return response.data;
@@ -12,7 +16,7 @@ export const ProfileCard = () => {
   );
 
   if (isLoading) {
-    return "loading";
+    return <div>Yükleniyor</div>;
   }
 
   return (
