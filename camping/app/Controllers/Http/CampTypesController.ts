@@ -1,4 +1,3 @@
-import Application from '@ioc:Adonis/Core/Application'
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import CampType from 'App/Models/CampType'
 
@@ -10,13 +9,10 @@ export default class CampTypesController {
 
   public async create({request,response }: HttpContextContract) {
     try {
-      const { name } = request.body(); //icon,
-      const icon = request.file("icon");
-      if (icon) {
-        await icon.move(Application.tmpPath("uploads"))
-      }
+      const { name,icon } = request.body(); //icon,
+
         await CampType.create({
-          icon: "/uploads/" +icon?.clientName,
+          icon: icon,
           name : name
         })
         response.json({

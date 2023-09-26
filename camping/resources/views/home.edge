@@ -46,13 +46,12 @@
       <p class="text-center text-lg leading-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</p>
     </div>
 <div class="max-w-7xl mx-auto">
-  <ul>
+  <ul class="flex justify-around my-10">
   @each(camp in campTypes)
-    <li>
+    <li class="flex w-40 h-40 flex-col items-center justify-center gap-4 border  hover:border-[#345e41] duration-150 hover:rounded-full cursor-pointer ease-in-out">
       <span>
         <i class="{{camp.icon}} text-7xl" style="color: #345e41;"></i>
       </span>
-
       <span>
         {{ camp.name }}
       </span>
