@@ -44,3 +44,4 @@ Route.get("/slider", 'SlidersController.index');
 Route.post("/slider", 'SlidersController.create');
 
 Route.post("/camp-type", 'CampTypesController.create');
+Route.post("/post", 'PostsController.create');

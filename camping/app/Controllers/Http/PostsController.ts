@@ -1,4 +1,5 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import Application from '@ioc:Adonis/Core/Application'
 import Post from 'App/Models/Post';
 
 export default class PostsController {
@@ -6,12 +7,21 @@ export default class PostsController {
 
   public async create({ request,response }: HttpContextContract) {
       try {
-        const { post_image, title, content } = request.body();
-        await Post.create({
-          post_image,
-          content,
-          title
-        })
+        const { title, content } = request.body();
+        const post_image = request.file("post_image");
+        if (post_image) {
+          post_image.move(Application.tmpPath('uploads'))
+          await Post.create({
+            content,
+            title,
+            post_image: "/uploads/" + post_image.clientName,
+          })
+          response.json({
+            message: "Saved",
+            status : "ok"
+          })
+        }
+
       } catch (error) {
 
       }
