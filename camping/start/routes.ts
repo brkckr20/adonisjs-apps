@@ -21,6 +21,7 @@
 import Route from '@ioc:Adonis/Core/Route'
 
 Route.get('/', 'HomeController.index')
+Route.get("/about_us", "AboutusesController.index");
 
 Route.get('/pages', async ({ view }) => {
   return view.render('pages' , {
