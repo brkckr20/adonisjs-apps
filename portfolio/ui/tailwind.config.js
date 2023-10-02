@@ -7,9 +7,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        "primary": "#28e98c",
-        "secondary": "#999999",
+        "primary": "#0F0F0F",
+        "secondary": "#676767",
         "info": "#1f1f1f"
+      },
+      maxWidth: {
+        "custom": "1170px"
       }
     },
   },
