@@ -1,23 +1,36 @@
-import PageName from "../components/page-name";
+import GridBox from "../components/grid-box";
 
 const About = () => {
   return (
-    <div className="mb-28" id="about">
-      <div>
-        <PageName icon="about" title="ABOUT" size={24} link="#about" />
-        <div className="mt-12">
-          <h1 className="text-5xl font-light">
-            Every great design begin with an even{" "}
-            <span className="text-primary">better story</span>
-          </h1>
-          <h2 className="text-secondary max-w-lg my-10">
-            Since beginning my journey as a freelance designer nearly 8 years
-            ago, I've done remote work for agencies, consulted for startups, and
-            collaborated with talented people to create digital products for
-            both business and consumer use. I'm quietly confident, naturally
-            curious, and perpetually working on improving my chopsone design
-            problem at a time.
-          </h2>
+    <div>
+      <div className="flex gap-4">
+        <div>
+          <GridBox isBottomIcon={false}>
+            <div className="p-6 rounded-xl">
+              <img
+                src="https://picsum.photos/id/15/390/390"
+                alt="profile-resim"
+              />
+            </div>
+          </GridBox>
+        </div>
+        <div className="">
+          <div>
+            <h1 className="text-7xl font-bold text-white text-center">
+              SELF-SUMMARY
+            </h1>
+            <GridBox isBottomIcon={false}>
+              <div className="h-full">
+                <h1>David Henderson</h1>
+                <p>
+                  I am a San francisco-based product designer with a focus on
+                  web design, illustration, a visual development. I have a
+                  diverse range of experience having worked across various
+                  fields and industries.
+                </p>
+              </div>
+            </GridBox>
+          </div>
         </div>
       </div>
     </div>

@@ -1,13 +1,15 @@
+import { Link } from "react-router-dom";
+
 const Header = () => {
   return (
     <div className="text-white max-w-custom mx-auto flex justify-between items-center py-4">
-      <div className="text-3xl font-semibold">GridX</div>
-      <ul className="flex items-center justify-center gap-4">
+      <div className="text-3xl font-semibold">BURAK</div>
+      <ul className="flex items-center justify-center gap-8">
         <li className="text-white hover:text-white duration-300 ease-in-out">
-          Home
+          <Link to="/">Home</Link>
         </li>
         <li className="text-secondary hover:text-white duration-300 ease-in-out">
-          About
+          <Link to="/about">About</Link>
         </li>
         <li className="text-secondary hover:text-white duration-300 ease-in-out">
           Works
