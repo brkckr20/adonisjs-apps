@@ -26,7 +26,7 @@ const About = () => {
                   I am a San francisco-based product designer with a focus on
                   web design, illustration, a visual development. I have a
                   diverse range of experience having worked across various
-                  fields and industries.
+                  fields and industries...
                 </p>
               </div>
             </GridBox>

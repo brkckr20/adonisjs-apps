@@ -105,7 +105,7 @@ function App() {
       {/* 3.row */}
       <div className="grid grid-cols-2 gap-x-4 mt-4">
         <div>
-          <GridBox>
+          <GridBox isBottomIcon={false}>
             <div className="grid grid-cols-2">
               <div className="p-6">
                 <GridBox isBottomIcon={false}>
