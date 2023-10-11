@@ -1,10 +1,14 @@
 import React from "react";
 
 interface IProps {
-  tip: string;
+  tip: "iş" | "eğitim";
+  tarih?: string;
 }
 
-const EducationExperienceCard: React.FC<IProps> = ({ tip }) => {
+const EducationExperienceCard: React.FC<IProps> = ({
+  tip,
+  tarih = "2020 - Present",
+}) => {
   return (
     <div
       className={`pl-12 ${
@@ -14,7 +18,7 @@ const EducationExperienceCard: React.FC<IProps> = ({ tip }) => {
       {" "}
       {/* border-r -> komponent durumuna göre bir sağda ve bir solda olacak */}
       <div>
-        <h1 className="text-base">2020 - Present</h1>
+        <h1 className="text-base">{tarih}</h1>
       </div>
       <div>
         <h2 className="text-white text-2xl my-2">
