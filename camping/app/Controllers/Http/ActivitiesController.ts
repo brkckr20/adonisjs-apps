@@ -1,9 +1,7 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 export default class ActivitiesController {
-  public async index({ view }: HttpContextContract) {
-    return view.render('activities')
-  }
+  public async index({}: HttpContextContract) {}
 
   public async create({}: HttpContextContract) {}
 

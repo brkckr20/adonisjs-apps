@@ -20,15 +20,11 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', 'HomeController.index')
-Route.get("/about_us", "AboutusesController.index");
-Route.get("/activities", "ActivitiesController.index");
+Route.get('/', 'PagesController.Home')
+Route.get("/about_us", "PagesController.AboutUs");
+Route.get("/activities", "PagesController.Activities");
+Route.get("/contact", "PagesController.Contact");
 
-Route.get('/pages', async ({ view }) => {
-  return view.render('pages' , {
-    title : "pages"
-  })
-})
 
 Route.get('/gallery', async ({ view }) => {
   return view.render('gallery' , {
@@ -41,6 +37,8 @@ Route.get('/blog', async ({ view }) => {
     title : "blog"
   })
 })
+
+Route.get("*", "PagesController.Error404");
 
 Route.get("/slider", 'SlidersController.index');
 Route.post("/slider", 'SlidersController.create');

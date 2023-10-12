@@ -1,11 +1,7 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 export default class AboutusesController {
-  public async index({ view }: HttpContextContract) {
-    return view.render("about_us", {
-      title : "pages"
-    })
-  }
+  public async index({}: HttpContextContract) {}
 
   public async create({}: HttpContextContract) {}
 
