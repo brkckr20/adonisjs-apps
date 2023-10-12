@@ -3,7 +3,7 @@ import GridBox from "../components/grid-box";
 
 const About = () => {
   return (
-    <div>
+    <div className="h-full">
       <div className="flex gap-4">
         <div>
           <GridBox isBottomIcon={false}>
@@ -30,10 +30,11 @@ const About = () => {
                     Burak Çakır
                   </h1>
                   <p className="text-white mb-6">
-                    I am a San francisco-based product designer with a focus on
-                    web design, illustration, a visual development. I have a
-                    diverse range of experience having worked across various
-                    fields and industries...
+                    I am a web developer who enjoys and is passionately
+                    committed to their work. Since graduating in 2020, I have
+                    been doing this job with great pleasure and learning new
+                    things every day by keeping myself updated with new
+                    knowledge. I love learning and researching.
                   </p>
                 </div>
               </div>
@@ -41,16 +42,27 @@ const About = () => {
           </div>
         </div>
       </div>
-      <div className="flex gap-4">
-        <div className="flex-grow">
-          <GridBox>
-            <h1>EXPERIENCES</h1>
-            <EducationExperienceCard tip="iş" />
+      <div className="flex gap-4 mt-4">
+        <div className="w-full">
+          <GridBox isBottomIcon={false}>
+            <div className="p-[30px]">
+              <h1 className="text-white text-base">EXPERIENCES</h1>
+              <EducationExperienceCard />
+              <EducationExperienceCard />
+              <EducationExperienceCard />
+            </div>
           </GridBox>
         </div>
-        <div className="flex-grow">
-          {" "}
-          <GridBox>s</GridBox>
+        <div className="w-full">
+          <GridBox isBottomIcon={false}>
+            <div className="p-[30px]">
+              <h1 className="text-white text-base uppercase">education</h1>
+              <EducationExperienceCard />
+              <EducationExperienceCard />
+              <EducationExperienceCard />
+              <EducationExperienceCard />
+            </div>
+          </GridBox>
         </div>
       </div>
     </div>
