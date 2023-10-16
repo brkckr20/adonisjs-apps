@@ -4,16 +4,13 @@ export default class extends BaseSchema {
   protected tableName = 'posts'
 
   public async up () {
-    this.schema.createTable(this.tableName, (table) => {
-      table.increments('id')
-      table.string("post_image")
-      table.string("title")
-      table.string("content")
+    this.schema.alterTable(this.tableName, (table) => {
       table.string("type")
     })
   }
 
   public async down () {
-    this.schema.dropTable(this.tableName)
+    this.schema.alterTable(this.tableName, (table) => {
+    })
   }
 }

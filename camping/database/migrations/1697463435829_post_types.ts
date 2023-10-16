@@ -1,15 +1,12 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
 export default class extends BaseSchema {
-  protected tableName = 'posts'
+  protected tableName = 'post_types'
 
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
-      table.string("post_image")
-      table.string("title")
-      table.string("content")
-      table.string("type")
+      table.string("name")
     })
   }
 

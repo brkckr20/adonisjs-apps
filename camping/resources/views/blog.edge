@@ -1,4 +1,77 @@
 @include('partials/header')
 
-</body>
-</html>
+<div id="banner">
+  <div class="bg-[rgba(239,236,230,.6)] h-[200px]">
+    <div class="max-w-7xl mx-auto h-full flex items-center justify-between">
+      <div>
+        <div class="text-5xl font-semibold">Blogs</div>
+      </div>
+      <div>
+        <div class="flex gap-2 mt-4 text-black text-lg items-center">
+          <a href="/" class="hover:underline">Home</a>
+          <i class="fa-solid fa-chevron-right"></i>
+          <a href="#" class="hover:underline">Blogs</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="max-w-7xl mx-auto pt-[95px] pb-32">
+  <div class="grid grid-cols-3 gap-8">
+    <div class="col-span-2">
+        <div>
+          <div>
+            <img src="https://kamperen.qodeinteractive.com/wp-content/uploads/2021/06/Blog-img-1.jpg" alt="">
+          </div>
+          <div class="flex gap-2 text-[13px] pt-5 pb-2">
+            <h3>Places</h3>
+            <h3>|</h3>
+            <h3>by Melissa Burton</h3>
+          </div>
+          <div>
+            <h1 class="text-4xl font-semibold">Camper van holiday</h1>
+            <p class="text-[15px] py-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit hendrerit faucibus. Suspendisse hendrerit turpis dui, eget ultricies erat consequat ut. Sed ac velit iaculis, condimentum neque eu, maximus urna. Maecenas vitae nunc sit amet risus aliquet facilisis. Cum sociis natoque penatibuss</p>
+            <button class="uppercase text-[13px] group">Read More <i class="fa-solid fa-arrow-right-long group-hover:ml-1 duration-200"></i></button>
+          </div>
+        </div>
+    </div>
+    <div class="col-span-1">
+      <div>
+        <h1 class="mb-6 text-[25px] font-semibold">Popular Posts</h1>
+        <div class="flex flex-col gap-6">
+          <div class="flex gap-6">
+              <div class="">
+                <img width="300" src="https://kamperen.qodeinteractive.com/wp-content/uploads/2021/07/Blog-img-16.jpg" alt="">
+              </div>
+              <div class="flex-grow">
+                <h1 class="text-xl font-semibold">Mountain camping new experiances</h1>
+                <p class="text-[13px]">July 22, 2021</p>
+              </div>
+          </div>
+          <div class="flex gap-6">
+              <div class="">
+                <img width="300" src="https://kamperen.qodeinteractive.com/wp-content/uploads/2021/07/Blog-img-15.jpg" alt="">
+              </div>
+              <div class="flex-grow">
+                <h1 class="text-xl font-semibold">Mountain camping new experiances</h1>
+                <p class="text-[13px]">July 22, 2021</p>
+              </div>
+          </div>
+          <div class="flex gap-6">
+              <div class="">
+                <img width="300" src="https://kamperen.qodeinteractive.com/wp-content/uploads/2021/07/Blog-img-14.jpg" alt="">
+              </div>
+              <div class="flex-grow">
+                <h1 class="text-xl font-semibold">Mountain camping new experiances</h1>
+                <p class="text-[13px]">July 22, 2021</p>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+@include('partials/footer')
