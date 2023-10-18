@@ -1,0 +1,21 @@
+@include('partials/header')
+
+<div class="max-w-7xl mx-auto">
+  <div class="shadow m-10 h-[400px] w-full flex items-center justify-center">
+    <form action="/login" method="POST">
+      <div>
+        <label class="block">Username</label>
+        <input type="text" class="border" name="username" id="username">
+      </div>
+      <div>
+        <label class="block">Password</label>
+        <input class="border" type="password" name="password" id="password">
+      </div>
+      <div>
+        <input type="submit" value="Login" class="bg-blue-500 hover:bg-blue-700 duration-300 mt-2 w-full p-2 text-white cursor-pointer">
+      </div>
+    </form>
+  </div>
+</div>
+
+@include('partials/footer')

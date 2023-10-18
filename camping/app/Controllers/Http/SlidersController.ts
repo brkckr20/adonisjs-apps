@@ -8,7 +8,7 @@ export default class SlidersController {
     return sliders;
   }
 
-  public async create({ request, response }: HttpContextContract) {
+  public async create({ request, response,session }: HttpContextContract) {
     try {
       const { baslik, aciklama, link } = request.body();
       const resim = request.file('resim');
@@ -19,11 +19,8 @@ export default class SlidersController {
         aciklama, baslik, link,
         resim : "/uploads/" +resim?.clientName
       });
-
-      return response.json({
-        status: "ok",
-        message: "Ekleme işlemi başarılı"
-      })
+      session.flash('bilgi','Kayıt işlemi başarılı')
+      return response.redirect("/admin/slider")
     } catch (error) {
       return error
     }

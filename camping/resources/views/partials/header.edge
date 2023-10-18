@@ -44,15 +44,19 @@
       </ul>
     </div>
   </div>
-  <div class="flex gap-2 divide-x divide-black">
-    <div class="pl-2">
-      29
+  <div class="flex divide-black">
+    <div class="border-r pr-2 border-black">
+      @if(username)
+        {{ username }}
+      @else
+      @endif
     </div>
-    <div class="px-2">
-      signin
-    </div>
-    <div class="pl-2">
-      en
-    </div>
+
+      @if (auth.user)
+        <a class="pl-2" href="/logout">Logout</a>
+      @else
+        <a class="pl-2" href="/login">Login</a>
+      @endif
+
   </div>
 </header>

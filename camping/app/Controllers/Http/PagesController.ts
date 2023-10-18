@@ -7,7 +7,7 @@ import Post from 'App/Models/Post';
 
 export default class PagesController {
 
-  public async Home({view} : HttpContextContract) {
+  public async Home({view,auth} : HttpContextContract) {
     const sliders = await Slider.all();
     const campTypes = await CampType.all();
     const posts = await Post.all();
@@ -15,26 +15,49 @@ export default class PagesController {
       title: "home",
       sliders: sliders,
       campTypes: campTypes,
-      posts : posts,
+      posts: posts,
+      username: auth.user?.username
     })
   }
 
-  public async AboutUs({ view }: HttpContextContract) {
+  public async AboutUs({ view,auth }: HttpContextContract) {
     return view.render("about_us", {
-      title : "pages"
+      title: "pages",
+      username: auth.user?.username
     })
   }
 
-  public async Activities({ view }: HttpContextContract) {
+  public async Activities({ view,auth }: HttpContextContract) {
     return view.render('activities', {
-      title : "pages"
+      title: "pages",
+      username: auth.user?.username
     })
   }
 
-  public async Contact({ view }:HttpContextContract) {
+  public async Contact({ view,auth }:HttpContextContract) {
     return view.render('contact', {
-      title : "pages"
+      title: "pages",
+      username: auth.user?.username
     })
+  }
+
+
+  public async Login({ view, auth }: HttpContextContract) {
+    await auth.use('web').authenticate();
+    return view.render('auth.login', {
+      username: auth.user?.username
+    })
+  }
+
+  public async AdminHome({ view }: HttpContextContract) {
+    return view.render("auth.home");
+  }
+
+  public async Slider({ view, auth }: HttpContextContract) {
+    await auth.use('web').authenticate();
+    return view.render("auth.slider", {
+      username: auth.user?.username
+    });
   }
 
   public async Error404({ view }: HttpContextContract) {

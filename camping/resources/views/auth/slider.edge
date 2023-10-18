@@ -1,0 +1,37 @@
+@include('partials/adminheader')
+
+  <div class="px-10">
+    <fieldset class="border mt-4">
+      <legend class="p-2">Slider Ekleme Paneli</legend>
+      <div class="max-w-md p-4">
+        @if(flashMessages.has('bilgi'))
+          <div class="bg-green-400 text-white p-4 mb-4">
+            {{flashMessages.get('bilgi')}}
+          </div>
+        @endif
+        <form action="/slider" method="POST" enctype="multipart/form-data">
+          <div>
+            <label class="block">Başlık</label>
+            <input class="border w-full outline-none p-1" autocomplete="off" type="text" name="baslik">
+          </div>
+          <div>
+            <label class="block">Açıklama</label>
+            <input class="border w-full outline-none p-1" autocomplete="off" type="text" name="aciklama">
+          </div>
+          <div>
+            <label class="block">Link</label>
+            <input class="border w-full outline-none p-1" autocomplete="off" type="text" name="link">
+          </div>
+          <div>
+            <label for="resim" class="block border p-1 mt-4 cursor-pointer hover:bg-slate-100">Resim Seç</label>
+            <input id="resim" class="border w-full outline-none p-1 hidden" autocomplete="off" type="file" name="resim">
+          </div>
+          <div>
+            <input  class="border w-full outline-none mt-4 p-1 bg-green-600 text-white hover:bg-green-800 duration-200 cursor-pointer" autocomplete="off" type="submit" value="Kaydet">
+          </div>
+        </form>
+      </div>
+    </fieldset>
+  </div>
+
+@include('partials/adminfooter')
