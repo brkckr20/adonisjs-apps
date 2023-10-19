@@ -1,0 +1,29 @@
+@include('partials/adminheader')
+
+  <div class="px-10">
+    <fieldset class="border mt-4">
+      <legend class="p-2">Olanaklar Ekleme Paneli</legend>
+      <div class="max-w-md p-4">
+        @if(flashMessages.has('bilgi'))
+          <div class="bg-green-400 text-white p-4 mb-4">
+            {{flashMessages.get('bilgi')}}
+          </div>
+        @endif
+        <form action="/facilities" method="POST" >
+          <div>
+            <label class="block">Name</label>
+            <input class="border w-full outline-none p-1" autocomplete="off" type="text" name="name">
+          </div>
+          <div>
+            <label class="block">ClassName</label>
+            <input class="border w-full outline-none p-1" autocomplete="off" type="text" name="className">
+          </div>
+          <div>
+            <input  class="border w-full outline-none mt-4 p-1 bg-green-600 text-white hover:bg-green-800 duration-200 cursor-pointer" type="submit" value="Kaydet">
+          </div>
+        </form>
+      </div>
+    </fieldset>
+  </div>
+
+@include('partials/adminfooter')

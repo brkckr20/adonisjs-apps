@@ -17,6 +17,7 @@ Route.get('/logout', 'AuthController.logout');
 
 Route.group(() => {
   Route.get('/admin/slider', 'PagesController.Slider')
+  Route.get("/admin/facilities", 'PagesController.Facilities')
   Route.get("/admin", 'PagesController.AdminHome')
 }).middleware(['auth']);
 
@@ -37,6 +38,8 @@ Route.get('/blog', async ({ view }) => {
 
 Route.get("/slider", 'SlidersController.index');
 Route.post("/slider", 'SlidersController.create');
+
+Route.post("/facilities", "FacilitiesController.create");
 
 Route.post("/camp-type", 'CampTypesController.create');
 Route.post("/post", 'PostsController.create');

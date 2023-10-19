@@ -52,6 +52,9 @@ export default class PagesController {
   public async AdminHome({ view }: HttpContextContract) {
     return view.render("auth.home");
   }
+  public async Facilities({ view }: HttpContextContract) {
+    return view.render("auth.facilities");
+  }
 
   public async Slider({ view, auth }: HttpContextContract) {
     await auth.use('web').authenticate();

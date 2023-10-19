@@ -1,6 +1,5 @@
 @include('partials/header')
 
-<!-- Slider main container -->
 
 <div class="swiper  relative">
   <!-- Additional required wrapper -->
@@ -63,12 +62,16 @@
 
 {{-- posts started   --}}
 <div class="max-w-7xl mx-auto mt-20 mb-12">
-  <div class="grid grid-cols-3 gap-8">
+  <div class="grid grid-cols-1 gap-8">
     @each(item in posts)
-      <div>
-        <img src="{{ item.post_image }}" alt="">
-        <h1 class="mt-6 mb-4 text-[25px] font-bold text-center">{{ item.title }}</h1>
-        <h2 class="text-center text-[15px] text-gray-600">{{ item.content }}</h2>
+      <div class="flex gap-x-10 items-center border rounded">
+        <div>
+          <img src="{{ item.post_image }}" alt="">
+        </div>
+        <div>
+          <h1 class="mt-6 mb-4 text-[30px] font-semibold">{{ item.title }}</h1>
+        <h2 class="text-[15px] text-gray-600">{{ item.content }}</h2>
+        </div>
       </div>
   @end
   </div>
