@@ -5,6 +5,9 @@ import Slider from 'App/Models/Slider';
 import CampType from 'App/Models/CampType';
 import Post from 'App/Models/Post';
 
+// facilites
+import Facility from 'App/Models/Facility';
+
 export default class PagesController {
 
   public async Home({view,auth} : HttpContextContract) {
@@ -53,7 +56,10 @@ export default class PagesController {
     return view.render("auth.home");
   }
   public async Facilities({ view }: HttpContextContract) {
-    return view.render("auth.facilities");
+    const facilities = await Facility.all();
+    return view.render("auth.facilities", {
+      facilities : facilities
+    });
   }
 
   public async Slider({ view, auth }: HttpContextContract) {

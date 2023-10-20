@@ -24,6 +24,32 @@
         </form>
       </div>
     </fieldset>
+    <div>
+      <table class="w-full mt-2">
+        <thead class="border bg-slate-100">
+          <tr class="">
+            <th class="p-1" scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Class</th>
+            <th scope="col">Icon</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          @each(item in facilities)
+          <tr class="border text-center">
+            <th class="border">{{item.id}}</th>
+            <td class="border">{{item.name}}</td>
+            <td class="border">{{item.class_name}}</td>
+            <td class="border"><i class="{{item.class_name}}"></i></td>
+            <td class="border">
+              <a href="/facilities/{{item.id}}" class="bg-red-500 inline-block p-1 px-10 m-1 text-white hover:bg-red-700 duration-200">Sil</a>
+              </td>
+          </tr>
+        @endeach
+        </tbody>
+      </table>
+    </div>
   </div>
 
 @include('partials/adminfooter')
