@@ -15,7 +15,7 @@ const Header = () => {
           Works
         </li>
         <li className="text-secondary hover:text-white duration-300 ease-in-out">
-          Contact
+          <Link to="/contact">Contact</Link>
         </li>
       </ul>
       <div>
