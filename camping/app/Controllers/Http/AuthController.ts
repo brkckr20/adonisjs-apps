@@ -10,7 +10,7 @@ export default class AuthController {
       session.flash('form', 'Your username, email, or password is incorrect')
       return response.redirect().back()
     }
-    return response.redirect('/')
+    return response.redirect('/admin')
   }
 
   public async register({ request, response, auth }: HttpContextContract) {

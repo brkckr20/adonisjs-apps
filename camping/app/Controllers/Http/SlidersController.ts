@@ -34,5 +34,8 @@ export default class SlidersController {
 
   public async update({}: HttpContextContract) {}
 
-  public async destroy({}: HttpContextContract) {}
+  public async destroy({ request }: HttpContextContract) {
+    const id = request.params;
+    console.log(id);
+  }
 }

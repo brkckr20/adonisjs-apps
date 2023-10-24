@@ -63,9 +63,11 @@ export default class PagesController {
   }
 
   public async Slider({ view, auth }: HttpContextContract) {
+    const sliders = await Slider.all();
     await auth.use('web').authenticate();
     return view.render("auth.slider", {
-      username: auth.user?.username
+      username: auth.user?.username,
+      sliders: sliders,
     });
   }
 

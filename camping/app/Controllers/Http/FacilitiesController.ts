@@ -26,5 +26,7 @@ export default class FacilitiesController {
 
   public async update({}: HttpContextContract) {}
 
-  public async destroy({}: HttpContextContract) {}
+  public async destroy({ }: HttpContextContract) {
+
+  }
 }
