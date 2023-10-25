@@ -9,6 +9,11 @@
             {{flashMessages.get('bilgi')}}
           </div>
         @endif
+        @if(flashMessages.has('notification'))
+          <div class="bg-green-400 text-white p-4 mb-4">
+            {{flashMessages.get('notification')}}
+          </div>
+        @endif
         <form action="/slider" method="POST" enctype="multipart/form-data">
           <div>
             <label class="block">Başlık</label>
@@ -54,8 +59,11 @@
             </a>
           </td>
           <td class="border">
-            <a href="/admin/slider/{{item.id}}" class="bg-red-500 inline-block p-1 px-10 m-1 text-white hover:bg-red-700 duration-200">Sil</a>
-            </td>
+            <form action="{{ '/admin/slider/' + item.id + '?_method=DELETE' }}" method="POST">
+              <button type="submit" class="bg-red-500 inline-block p-1 px-10 m-1 text-white hover:bg-red-700 duration-200">Delete</button>
+          </form>
+
+          </td>
         </tr>
       @endeach
       </tbody>

@@ -34,8 +34,13 @@ export default class SlidersController {
 
   public async update({}: HttpContextContract) {}
 
-  public async destroy({ request }: HttpContextContract) {
-    const id = request.params;
-    console.log(id);
+  public async destroy({ params,session,response }: HttpContextContract) {
+    const id = params.id;
+    const slider = await Slider.find(id);
+    session.flash({
+      bilgi : "Silme işlemi başarılı..."
+    })
+    await slider?.delete();
+    return response.redirect("/admin/slider")
   }
 }

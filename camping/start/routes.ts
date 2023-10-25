@@ -17,7 +17,7 @@ Route.get('/logout', 'AuthController.logout');
 
 Route.group(() => {
   Route.get('/admin/slider', 'PagesController.Slider')
-  Route.get('/admin/slider:/id', 'SlidersController.destroy')
+  Route.post('/admin/slider/:id', 'SlidersController.destroy')
   Route.get("/admin/facilities", 'PagesController.Facilities')
   Route.get("/admin", 'PagesController.AdminHome')
 }).middleware(['auth']);
