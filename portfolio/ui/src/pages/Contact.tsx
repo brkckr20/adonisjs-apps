@@ -6,8 +6,8 @@ const Contact = () => {
   return (
     <div className="h-full">
       <div className="text-white grid grid-cols-3 gap-12">
-        <Slide direction="left" className="col-span-1">
-          <div>
+        <Slide direction="left" className="col-span-1 h-full">
+          <div className="h-full">
             <h1 className="mb-4">CONTACT INFO</h1>
             {/* items start */}
             <div className="flex gap-4 mb-12">
@@ -51,7 +51,7 @@ const Contact = () => {
                 <p>burak2043@gmail.com</p>
               </div>
             </div>
-            <div>
+            <div className="">
               <h1>SOCIAL INFO</h1>
               <>
                 <ul className="flex w-full items-center justify-between mt-4">
@@ -88,7 +88,7 @@ const Contact = () => {
             </div>
           </div>
         </Slide>
-        <div className="col-span-2">
+        <div className="col-span-2 h-full">
           <Slide direction="right" className="w-full">
             <ContactForm />
           </Slide>

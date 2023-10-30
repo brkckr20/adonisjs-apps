@@ -3,6 +3,8 @@ import App from "./App";
 import About from "./pages/About";
 import Layout from "./layouts";
 import Contact from "./pages/Contact";
+import Login from "./pages/Login";
+import ProtectedRoutes from "./ProtectedRoutes";
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +22,18 @@ export const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/add",
+        element: (
+          <ProtectedRoutes>
+            <div>Lorem</div>
+          </ProtectedRoutes>
+        ),
       },
     ],
   },
