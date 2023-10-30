@@ -1,11 +1,12 @@
-import { Zoom, Slide } from "react-awesome-reveal";
+import { Slide } from "react-awesome-reveal";
 import Icon from "../icons";
+import ContactForm from "../components/contact-form";
 
 const Contact = () => {
   return (
     <div className="h-full">
-      <div className="text-white grid grid-cols-3">
-        <Slide direction="left">
+      <div className="text-white grid grid-cols-3 gap-12">
+        <Slide direction="left" className="col-span-1">
           <div>
             <h1 className="mb-4">CONTACT INFO</h1>
             {/* items start */}
@@ -87,7 +88,11 @@ const Contact = () => {
             </div>
           </div>
         </Slide>
-        <div>sağ</div>
+        <div className="col-span-2">
+          <Slide direction="right" className="w-full">
+            <ContactForm />
+          </Slide>
+        </div>
       </div>
     </div>
   );
