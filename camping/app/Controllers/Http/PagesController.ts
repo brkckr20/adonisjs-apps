@@ -62,6 +62,10 @@ export default class PagesController {
     });
   }
 
+  public async BlogPost({ view }: HttpContextContract) {
+    return view.render("auth.blog_post");
+  }
+
   public async Slider({ view, auth }: HttpContextContract) {
     const sliders = await Slider.all();
     await auth.use('web').authenticate();

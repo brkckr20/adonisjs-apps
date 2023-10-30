@@ -1,6 +1,7 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Application from '@ioc:Adonis/Core/Application'
 import Post from 'App/Models/Post';
+import slugify from 'slugify';
 
 export default class PostsController {
   public async index({}: HttpContextContract) {}
@@ -15,6 +16,9 @@ export default class PostsController {
             content,
             title,
             post_image: "/uploads/" + post_image.clientName,
+            slug: slugify(title, {
+              lower : true
+            })
           })
           response.json({
             message: "Saved",

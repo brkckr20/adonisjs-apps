@@ -19,6 +19,7 @@ Route.group(() => {
   Route.get('/admin/slider', 'PagesController.Slider')
   Route.post('/admin/slider/:id', 'SlidersController.destroy')
   Route.get("/admin/facilities", 'PagesController.Facilities')
+  Route.get("/admin/blogposts", 'PagesController.BlogPost')
   Route.get("/admin", 'PagesController.AdminHome')
 }).middleware(['auth']);
 

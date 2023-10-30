@@ -1,0 +1,34 @@
+@include('partials/adminheader')
+  <div class="px-10">
+    <fieldset class="border mt-4">
+      <legend class="p-2">Blog Post Ekleme Paneli</legend>
+      <div class="max-w-md p-4">
+        @if(flashMessages.has('bilgi'))
+          <div class="bg-green-400 text-white p-4 mb-4">
+            {{flashMessages.get('bilgi')}}
+          </div>
+        @endif
+        <form action="/facilities" method="POST" >
+          <div>
+            <label class="block">Başlık</label>
+            <input class="border w-full outline-none p-1" autocomplete="off" type="text" name="title">
+          </div>
+          <div>
+            <label class="block">İçerik</label>
+            <textarea class="w-full border outline-none p-1" id="" cols="30" rows="6" name="content"></textarea>
+          </div>
+          <div>
+            <label class="block">Resim</label>
+            <input class="border w-full outline-none p-1" autocomplete="off" type="file" name="post_image">
+          </div>
+          <div>
+            <input
+              class="border w-full outline-none mt-4 p-1 bg-green-600 text-white hover:bg-green-800 duration-200 cursor-pointer"
+              type="submit"
+              value="Kaydet">
+          </div>
+        </form>
+      </div>
+    </fieldset>
+  </div>
+@include('partials/adminfooter')

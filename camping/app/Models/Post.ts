@@ -10,5 +10,7 @@ export default class Post extends BaseModel {
   @column()
   public content :string
   @column()
-  public type :string
+  public type: string
+  @column()
+  public slug :string
 }
