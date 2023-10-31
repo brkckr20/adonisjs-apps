@@ -1,8 +1,8 @@
 import React from "react";
-import { Outlet, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 const useAuth = () => {
-  const user = { loggedIn: false };
+  const user = { loggedIn: true };
   return user && user.loggedIn;
 };
 

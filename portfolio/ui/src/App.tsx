@@ -1,6 +1,7 @@
 import "react-modern-drawer/dist/index.css";
 import GridBox from "./components/grid-box";
 import { Zoom } from "react-awesome-reveal";
+import { Link } from "react-router-dom";
 
 function App() {
   return (
@@ -8,28 +9,30 @@ function App() {
       <div className="grid grid-cols-2 gap-x-4">
         <div className="h-full">
           <Zoom>
-            <GridBox>
-              <div className="px-[50px] py-[46px] h-full flex gap-x-6">
-                <div>
-                  <img
-                    src="https://picsum.photos/id/15/224/224"
-                    alt=""
-                    className="rounded-tl-3xl rounded-br-3xl"
-                  />
+            <Link to="/about">
+              <GridBox>
+                <div className="px-[50px] py-[46px] h-full flex gap-x-6">
+                  <div>
+                    <img
+                      src="https://picsum.photos/id/15/224/224"
+                      alt=""
+                      className="rounded-tl-3xl rounded-br-3xl"
+                    />
+                  </div>
+                  <div className="flex flex-col justify-center gap-y-3">
+                    <h4 className="text-secondary uppercase text-lg font-semibold">
+                      a fullstack web developer
+                    </h4>
+                    <h2 className="text-white text-4xl font-semibold">
+                      Burak Çakır
+                    </h2>
+                    <p className="text-secondary text-md">
+                      I am a Web developer based in Denizli / Turkey.
+                    </p>
+                  </div>
                 </div>
-                <div className="flex flex-col justify-center gap-y-3">
-                  <h4 className="text-secondary uppercase text-lg font-semibold">
-                    a web designer
-                  </h4>
-                  <h2 className="text-white text-4xl font-semibold">
-                    Burak Çakır
-                  </h2>
-                  <p className="text-secondary text-md">
-                    I am a Web Designer based in Denizli / Turkey.
-                  </p>
-                </div>
-              </div>
-            </GridBox>
+              </GridBox>
+            </Link>
           </Zoom>
         </div>
         <div className="flex flex-col gap-y-2">
@@ -122,9 +125,9 @@ function App() {
                 <div className="p-6">
                   <GridBox isBottomIcon={false}>
                     <div className="px-[50px] py-[46px]">
-                      <h2 className="text-4xl text-white text-center">03</h2>
+                      <h2 className="text-4xl text-white text-center">+3</h2>
                       <h1 className="text-center mt-4 uppercase text-secondary text-xs">
-                        Experiences
+                        Years Experiences
                       </h1>
                     </div>
                   </GridBox>

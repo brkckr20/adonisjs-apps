@@ -5,6 +5,9 @@ import Layout from "./layouts";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import ProtectedRoutes from "./ProtectedRoutes";
+import Home from "./pages/auth/Home";
+import AdminLayot from "./layouts/AdminLayot";
+import AddUser from "./pages/auth/AddUser";
 
 export const router = createBrowserRouter([
   {
@@ -28,12 +31,26 @@ export const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/add",
-        element: (
-          <ProtectedRoutes>
-            <div>Lorem</div>
-          </ProtectedRoutes>
-        ),
+        path: "/admin",
+        element: <AdminLayot />,
+        children: [
+          {
+            index: true,
+            element: (
+              <ProtectedRoutes>
+                <Home />
+              </ProtectedRoutes>
+            ),
+          },
+          {
+            path: "/admin/kullanici-ekle",
+            element: (
+              <ProtectedRoutes>
+                <AddUser />
+              </ProtectedRoutes>
+            ),
+          },
+        ],
       },
     ],
   },
