@@ -8,7 +8,7 @@
             {{flashMessages.get('bilgi')}}
           </div>
         @endif
-        <form action="/facilities" method="POST" >
+        <form action="/admin/blogposts" method="POST" enctype="multipart/form-data">
           <div>
             <label class="block">Başlık</label>
             <input class="border w-full outline-none p-1" autocomplete="off" type="text" name="title">
@@ -18,7 +18,7 @@
             <textarea class="w-full border outline-none p-1" id="" cols="30" rows="6" name="content"></textarea>
           </div>
           <div>
-            <label class="block">Resim</label>
+            <label>Resim</label>
             <input class="border w-full outline-none p-1" autocomplete="off" type="file" name="post_image">
           </div>
           <div>

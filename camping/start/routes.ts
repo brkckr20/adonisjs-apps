@@ -21,6 +21,7 @@ Route.group(() => {
   Route.get("/admin/facilities", 'PagesController.Facilities')
   Route.get("/admin/blogposts", 'PagesController.BlogPost')
   Route.get("/admin", 'PagesController.AdminHome')
+  Route.post("/admin/blogposts","PostsController.create")
 }).middleware(['auth']);
 
 

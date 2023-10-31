@@ -6,7 +6,7 @@ import slugify from 'slugify';
 export default class PostsController {
   public async index({}: HttpContextContract) {}
 
-  public async create({ request,response }: HttpContextContract) {
+  public async create({ request, response, session }: HttpContextContract) {
       try {
         const { title, content } = request.body();
         const post_image = request.file("post_image");
@@ -20,10 +20,8 @@ export default class PostsController {
               lower : true
             })
           })
-          response.json({
-            message: "Saved",
-            status : "ok"
-          })
+          session.flash('bilgi', 'Kayıt işlemi başarılı')
+          return response.redirect("/admin/blogposts")
         }
 
       } catch (error) {

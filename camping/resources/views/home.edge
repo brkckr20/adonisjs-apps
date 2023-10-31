@@ -1,7 +1,7 @@
 @include('partials/header')
 
 
-<div class="swiper  relative">
+<div class="swiper mt-[86px] relative">
   <!-- Additional required wrapper -->
   <div class="swiper-wrapper">
     @each(slide in sliders)
@@ -62,18 +62,18 @@
 
 {{-- posts started   --}}
 <div class="max-w-7xl mx-auto mt-20 mb-12">
-  <div class="grid grid-cols-1 gap-8">
+  <div class="grid grid-cols-3 gap-8">
     @each(item in posts)
-      <div class="flex gap-x-10 items-center border rounded">
+      <div class="flex flex-col text-center items-center border rounded">
         <div>
           <img src="{{ item.post_image }}" alt="">
         </div>
-        <div>
+        <div class="px-4 mb-2">
           <h1 class="mt-6 mb-4 text-[30px] font-semibold">{{ item.title }}</h1>
         <h2 class="text-[15px] text-gray-600">{{ item.content }}</h2>
         </div>
       </div>
-  @end
+    @endeach
   </div>
 </div>
 
