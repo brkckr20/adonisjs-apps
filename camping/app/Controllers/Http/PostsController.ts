@@ -31,7 +31,10 @@ export default class PostsController {
 
   public async store({}: HttpContextContract) {}
 
-  public async show({}: HttpContextContract) {}
+  public async show({ request, response }: HttpContextContract) {
+    console.log(request.params());
+    response.redirect("/");
+  }
 
   public async edit({}: HttpContextContract) {}
 

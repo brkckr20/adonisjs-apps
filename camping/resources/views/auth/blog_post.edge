@@ -31,4 +31,31 @@
       </div>
     </fieldset>
   </div>
+  <div class="px-10">
+    <table class="w-full mt-2 ">
+      <thead class="border bg-slate-100">
+        <tr class="">
+          <th class="p-1" scope="col">Id</th>
+          <th scope="col">Title</th>
+          <th scope="col">Content</th>
+          <th scope="col">Slug</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        @each(item in posts)
+        <tr class="border text-center">
+          <th class="border">{{item.id}}</th>
+          <td class="border">{{item.title}}</td>
+          <td class="border">{{item.content}}</td>
+          <td class="border">{{item.slug}}</td>
+          <td class="border">
+            <a href="/facilities/{{item.id}}" class="bg-red-500 inline-block p-1 px-10 m-1 text-white hover:bg-red-700 duration-200">Sil</a>
+            </td>
+        </tr>
+      @endeach
+      </tbody>
+  </div>
+  </table>
+
 @include('partials/adminfooter')

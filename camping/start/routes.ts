@@ -46,6 +46,7 @@ Route.post("/facilities", "FacilitiesController.create");
 
 Route.post("/camp-type", 'CampTypesController.create');
 Route.post("/post", 'PostsController.create');
+Route.get("/post/:slug",'PagesController.PostBySlug')
 
 
 Route.get("*", "PagesController.Error404");

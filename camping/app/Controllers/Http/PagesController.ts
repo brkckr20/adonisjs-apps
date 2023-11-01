@@ -63,7 +63,17 @@ export default class PagesController {
   }
 
   public async BlogPost({ view }: HttpContextContract) {
-    return view.render("auth.blog_post");
+    const posts = await Post.all();
+    return view.render("auth.blog_post", {
+      posts
+    });
+  }
+
+  public async PostBySlug({ view, request, response }: HttpContextContract) {
+    const { slug } = await request.params();
+    return view.render("blog_read", {
+      slug
+    })
   }
 
   public async Slider({ view, auth }: HttpContextContract) {
