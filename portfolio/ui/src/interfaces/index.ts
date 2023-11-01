@@ -4,4 +4,8 @@ export interface User{
     adres?: string;
     mail?: string;
     resim?: string;
+    token: string;
+    loading: 'idle' | 'pending' | 'succeeded' | 'failed';
+    id?: number,
+    isLoggedIn : boolean
 }

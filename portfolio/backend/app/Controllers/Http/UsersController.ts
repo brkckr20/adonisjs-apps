@@ -3,19 +3,16 @@ import Database from '@ioc:Adonis/Lucid/Database'
 import Application from '@ioc:Adonis/Core/Application'
 import User from '../../Models/User';
 import Hash from '@ioc:Adonis/Core/Hash'
-import Socialmedia from '../../Models/Socialmedia';
-
-
+// import Socialmedia from '../../Models/Socialmedia';
 
 export default class UsersController {
-  public async user({ response }: HttpContextContract) {
+  public async user({ response, auth }: HttpContextContract) {
     const user = await User.find(1)
-    const socialMediaList = await Socialmedia.all();
     delete user?.$attributes.parola;
-
+    const jwt = await auth.use("api").generate(user, { expiresIn : "1 day"});
     response.json({
       user: user,
-      socialMediaList
+      token : jwt
     });
   }
 
