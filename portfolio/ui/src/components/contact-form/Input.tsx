@@ -1,8 +1,10 @@
-import { FC } from "react";
+import { FC, FormEvent } from "react";
 
 interface IProps {
   placeHolder: string;
   className?: string;
+  value: string;
+  onChange: (e: any) => void;
 }
 
 const Input: FC<IProps> = ({ placeHolder, className }) => {

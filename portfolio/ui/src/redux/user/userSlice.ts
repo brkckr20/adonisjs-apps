@@ -22,7 +22,8 @@ export const userSlice = createSlice({
                 state.loading = "pending";
             })
             .addCase(fetchUser.fulfilled, (state, action) => {
-                state.isLoggedIn = false
+                state.isLoggedIn = true
+                console.log(action.payload)
                 state.loading = "succeeded";
                 state.token = action.payload.token;
                 state.id = action.payload.id;

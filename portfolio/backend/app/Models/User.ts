@@ -22,4 +22,7 @@ export default class User extends BaseModel {
   @column()
   public resim : string
 
+  @column()
+  public username : string
+
 }

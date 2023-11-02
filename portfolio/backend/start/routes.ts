@@ -7,4 +7,8 @@ Route.get('/user', 'UsersController.user')
 //Route.post('/user', 'UsersController.create')
 //Route.put('/user', 'UsersController.update')
 
+
+// Login / Register Routes Start
+Route.post("/login", 'AuthController.login');
+
 Route.post("/social-media", "SocialmediasController.create");

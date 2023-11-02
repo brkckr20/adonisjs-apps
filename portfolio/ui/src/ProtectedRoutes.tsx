@@ -15,19 +15,21 @@ const ProtectedRoutes: React.FC<IProps> = ({ children }) => {
 
   useEffect(() => {
     (async () => {
-      dispatch(fetchUser());
+      if (status === "idle") {
+        dispatch(fetchUser());
+      }
     })();
   }, [dispatch]);
 
-  if (status !== "succeeded") {
+  if (status === "pending") {
     return <div>Yükleniyor</div>;
   }
 
-  return isLoggedIn ? (
-    <React.Fragment>{children}</React.Fragment>
-  ) : (
-    <Navigate to="/login" />
-  );
+  if (!isLoggedIn) {
+    <Navigate to="/login" />;
+  }
+
+  return children;
 };
 
 export default ProtectedRoutes;

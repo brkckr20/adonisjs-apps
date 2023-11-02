@@ -6,13 +6,13 @@ import Hash from '@ioc:Adonis/Core/Hash'
 // import Socialmedia from '../../Models/Socialmedia';
 
 export default class UsersController {
-  public async user({ response, auth }: HttpContextContract) {
+  public async user({ response }: HttpContextContract) {
     const user = await User.find(1)
     delete user?.$attributes.parola;
-    const jwt = await auth.use("api").generate(user, { expiresIn : "1 day"});
+    // const jwt = await auth.use("api").generate(user, { expiresIn : "1 day"});
     response.json({
       user: user,
-      token : jwt
+      // token : jwt
     });
   }
 
@@ -40,4 +40,5 @@ export default class UsersController {
       message : "Güncelleme işlemi başarıyla tamamlandı!"
     })
   }
+
 }
