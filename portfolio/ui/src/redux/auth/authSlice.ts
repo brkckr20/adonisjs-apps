@@ -1,19 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginUser } from "./services";
+import {  loginUser } from "../../api";
 
 interface AuthState{
     status: 'idle' | 'pending' | 'succeeded' | 'failed';
-    token: string | null,
+    token: string | null | any,
     isLoggedIn: boolean,
     loggedUser: any,
     errorMessage: string,
     isError : boolean
 }
 
+const token = localStorage.getItem("token");
+
 const initialState : AuthState = {
-    token: "",
+    token: token || "",
     status: "idle",
-    isLoggedIn: false,
+    isLoggedIn: token ? true : false,
     loggedUser: {},
     errorMessage: "",
     isError : false
@@ -22,7 +24,12 @@ const initialState : AuthState = {
 const authSlice = createSlice({
     name: "auth",
     initialState,
-    reducers: {},
+    reducers: {
+        logout: (state) => {
+            localStorage.removeItem("token");
+            state.isLoggedIn = false;
+        }
+    },
     extraReducers(builder) {
         builder
             .addCase(loginUser.pending, (state) => {
@@ -33,10 +40,16 @@ const authSlice = createSlice({
                     state.isError = true
                     state.errorMessage = action.payload.message
                 } else {
-                    state.isError = false
+                    state.isError = false;
+                    state.errorMessage = "";
+                    localStorage.setItem("token", action.payload.token.token);
+                    state.isLoggedIn = true;
+                    state.status = "succeeded"
                 }
             })
     },
 })
+
+export const { logout } = authSlice.actions;
 
 export default authSlice.reducer

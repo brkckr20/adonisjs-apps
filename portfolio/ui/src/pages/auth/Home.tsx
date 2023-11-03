@@ -1,5 +1,12 @@
+// import { useEffect } from "react";
+// import { test } from "../../api";
+
 const Home = () => {
-  return <div>Home</div>;
+  // useEffect(() => {
+  //   test();
+  // }, []);
+
+  return <div className="text-white">Home 1</div>;
 };
 
 export default Home;

@@ -2,9 +2,24 @@ import { Typography, Box, Skeleton } from "@mui/joy";
 import { useQuery } from "react-query";
 import { fetchUserInfo } from "../../api";
 import { API_URL } from "../../config";
+import { logout } from "../../redux/auth/authSlice";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../redux/store";
 
 const AddUser = () => {
-  const { data, isLoading } = useQuery("userInfo", fetchUserInfo);
+  const dispatch = useDispatch<AppDispatch>();
+  const { data, isLoading, isError, error } = useQuery(
+    "userInfo",
+    fetchUserInfo
+  );
+  if (isLoading) {
+    return <div>Loading!</div>;
+  }
+
+  if (isError) {
+    dispatch(logout());
+  }
+
   return (
     <div className="p-2 text-white">
       <Typography level="h3" textColor="common.white" marginBottom={2}>
@@ -18,19 +33,19 @@ const AddUser = () => {
             <Typography level="h4" textColor="common.white">
               Ad Soyad
             </Typography>
-            <span>{data.user.ad_soyad}</span>
+            <span>{data.ad_soyad}</span>
             <Typography level="h4" textColor="common.white">
               E-Mail
             </Typography>
-            <span>{data.user.mail}</span>
+            <span>{data.mail}</span>
             <Typography level="h4" textColor="common.white">
               E-Mail
             </Typography>
-            <img src={API_URL + data.user.resim} alt="lorem" width={250} />
+            <img src={API_URL + data.resim} alt="lorem" width={250} />
             <Typography level="h4" textColor="common.white">
               Unvan
             </Typography>
-            <span>{data.user.unvan}</span>
+            <span>{data.unvan}</span>
           </Box>
         )}
       </Skeleton>

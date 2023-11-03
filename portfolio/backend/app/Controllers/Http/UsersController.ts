@@ -6,14 +6,24 @@ import Hash from '@ioc:Adonis/Core/Hash'
 // import Socialmedia from '../../Models/Socialmedia';
 
 export default class UsersController {
-  public async user({ response }: HttpContextContract) {
-    const user = await User.find(1)
-    delete user?.$attributes.parola;
-    // const jwt = await auth.use("api").generate(user, { expiresIn : "1 day"});
-    response.json({
-      user: user,
-      // token : jwt
-    });
+  public async user({ response,auth }: HttpContextContract) {
+    try {
+      const user = auth.user;
+      delete user?.$attributes.parola;
+      response.send(user);
+    } catch (error) {
+      console.log(error);
+
+    }
+
+    // response.json({message : "user tokeni karsilastirildi..."});
+    // const user = await User.find(2)
+    // delete user?.$attributes.parola;
+    // // const jwt = await auth.use("api").generate(user, { expiresIn : "1 day"});
+    // response.json({
+    //   user: user,
+    //   // token : jwt
+    // });
   }
 
   async create({request,response} : HttpContextContract) {
@@ -33,7 +43,7 @@ export default class UsersController {
           await coverImage.move(Application.tmpPath('uploads'));
           await User
             .query()
-            .where('id', 1)
+            .where('id', 2)
             .update({ resim: "/uploads/" + coverImage.clientName, parola : hashedPassword });
     }
     response.json({

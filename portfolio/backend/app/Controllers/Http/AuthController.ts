@@ -1,6 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import User from '../../Models/User';
-import {LoginMessages} from '../../../interfaces'
+import { LoginMessages } from '../../../interfaces'
 
 export default class AuthController {
   public async login({request,response,auth}: HttpContextContract ) {
@@ -14,11 +14,24 @@ export default class AuthController {
           message: "User not found!",
           code : 404
         } as LoginMessages)
+        return;
+      }
+      if (user?.parola !== password) {
+        response.json({
+          message: "Incorrect password",
+          code : 404
+        } as LoginMessages)
+        return;
       }
 
-      return user
-    } catch (error) {
+      const jwt = await auth.use("api").generate(user, { expiresIn: "1 day" });
+      return response.json({
+        token: jwt,
+        code : 200
+      })
 
+    } catch (error) {
+      console.log(error);
     }
   }
 }

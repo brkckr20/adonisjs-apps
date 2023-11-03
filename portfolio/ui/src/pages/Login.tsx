@@ -1,22 +1,24 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import GridBox from "../components/grid-box";
 import Button from "@mui/joy/Button";
 import Alert from "@mui/joy/Alert";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../redux/store";
 import { loginUser } from "../redux/auth/services";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const dispatch = useDispatch<AppDispatch>();
-
+  const navigate = useNavigate();
   const auth = useSelector((state: RootState) => state.auth);
 
-  const [username, setUsername] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [username, setUsername] = useState<string>("burakcakir");
+  const [password, setPassword] = useState<string>("brkckr20");
 
-  const handleLogin = (e: FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(loginUser({ username, password }));
+    await dispatch(loginUser({ username, password }));
+    navigate("/admin");
   };
 
   return (
