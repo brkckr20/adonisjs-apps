@@ -23,7 +23,7 @@
     <div class="col-span-2">
         <div>
           <div>
-            <img src="https://kamperen.qodeinteractive.com/wp-content/uploads/2021/06/Blog-img-1.jpg" alt="">
+            <img src="{{ post.post_image }}" alt="">
           </div>
           <div class="flex gap-2 text-[13px] pt-5 pb-2">
             <h3>Places</h3>
@@ -31,9 +31,9 @@
             <h3>by Melissa Burton</h3>
           </div>
           <div>
-            <h1 class="text-4xl font-semibold">Camper van holiday</h1>
-            <p class="text-[15px] py-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit hendrerit faucibus. Suspendisse hendrerit turpis dui, eget ultricies erat consequat ut. Sed ac velit iaculis, condimentum neque eu, maximus urna. Maecenas vitae nunc sit amet risus aliquet facilisis. Cum sociis natoque penatibuss</p>
-            <button class="uppercase text-[13px] group">Read More <i class="fa-solid fa-arrow-right-long group-hover:ml-1 duration-200"></i></button>
+            <h1 class="text-4xl font-semibold">{{post.title}}</h1>
+            <p class="text-[15px] py-4">{{ post.content }}</p>
+
           </div>
         </div>
     </div>

@@ -71,8 +71,10 @@ export default class PagesController {
 
   public async PostBySlug({ view, request, response }: HttpContextContract) {
     const { slug } = await request.params();
-    return view.render("blog_read", {
-      slug
+    const post = await Post.findBy('slug', slug);
+    return view.render("blog", {
+      slug,
+      post
     })
   }
 
