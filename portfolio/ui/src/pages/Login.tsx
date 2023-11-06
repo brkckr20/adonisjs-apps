@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import GridBox from "../components/grid-box";
 import Button from "@mui/joy/Button";
 import Alert from "@mui/joy/Alert";
@@ -18,8 +18,14 @@ const Login = () => {
   const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await dispatch(loginUser({ username, password }));
-    navigate("/admin");
+    if (auth.isLoggedIn) {
+      navigate("/admin");
+    }
   };
+
+  // useEffect(() => {
+  //   console.log(auth);
+  // }, [auth]);
 
   return (
     <div className="w-full h-full">

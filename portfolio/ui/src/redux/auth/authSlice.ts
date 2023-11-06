@@ -7,7 +7,8 @@ interface AuthState{
     isLoggedIn: boolean,
     loggedUser: any,
     errorMessage: string,
-    isError : boolean
+    isError: boolean,
+    responseCode : number | null
 }
 
 const token = localStorage.getItem("token");
@@ -18,7 +19,8 @@ const initialState : AuthState = {
     isLoggedIn: token ? true : false,
     loggedUser: {},
     errorMessage: "",
-    isError : false
+    isError: false,
+    responseCode : null
 }
 
 const authSlice = createSlice({

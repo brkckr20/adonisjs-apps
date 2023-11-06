@@ -10,6 +10,11 @@ interface IProps {
 const ProtectedRoutes: React.FC<IProps> = ({ children }) => {
   const status = useSelector((state: RootState) => state.auth.status);
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
+  const responseCode = useSelector(
+    (state: RootState) => state.auth.responseCode
+  );
+
+  console.log(responseCode);
 
   if (status === "pending") {
     return <div>Yükleniyor</div>;
