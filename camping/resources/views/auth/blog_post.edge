@@ -8,14 +8,19 @@
             {{flashMessages.get('bilgi')}}
           </div>
         @endif
-        <form action="/admin/blogposts" method="POST" enctype="multipart/form-data">
+        <form id="blogpostform" action="/admin/blogposts" method="POST" enctype="multipart/form-data">
           <div>
             <label class="block">Başlık</label>
             <input class="border w-full outline-none p-1" autocomplete="off" type="text" name="title">
           </div>
-          <div>
+          {{--  <div>
             <label class="block">İçerik</label>
             <textarea class="w-full border outline-none p-1" id="" cols="30" rows="6" name="content"></textarea>
+          </div>  --}}
+          <div>
+            <label class="block">İçerik</label>
+            <div id="editor"></div>
+            <input type="hidden" name="content" value="gizli value" id="hiddenInputBlogPost">
           </div>
           <div>
             <label>Resim</label>

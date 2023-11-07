@@ -3,11 +3,56 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js" integrity="sha512-Y2IiVZeaBwXG1wSV7f13plqlmFOx8MdjuHyYFVoYzhyRr3nH/NMDjTBSswijzADdNzMyWNetbLMfOpIPl6Cv9g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.4.1/index.js" integrity="sha512-jrYR1cG7wwq2l+uNH+XXF18hjN+j8MBjM2PK2+fV/nAIHKxqpg479rOWFOxTpCnyPMZeGAi+eDAxHyrzTzkyRg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{{--  ckeditor  --}}
+<script src="//cdn.gaic.com/cdn/ui-bootstrap/0.58.0/js/lib/ckeditor/ckeditor.js"></script>
+{{--  <script src='http://ckeditor.com/cke4/addon/wordcount.js'></script>  --}}
 <script>
 $(document).on('click', '[data-toggle="lightbox"]', function(event) {
                 event.preventDefault();
                 $(this).ekkoLightbox();
             });
+
+</script>
+<script>
+
+$(() => {
+  CKEDITOR.config.toolbar = [
+    { name: 'clipboard', groups: [ 'clipboard', 'undo' ], items: [ 'Undo', 'Redo' ] },
+    { name: 'links', items: [ 'Link', 'Unlink'] },
+    { name: 'insert', items: [ 'Image', 'Table' ] },
+    { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline'] },
+    { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'] },
+    { name: 'styles', items: [ 'FontSize' ] },
+    { name: 'colors', items: [ 'TextColor' ] },
+    { name: 'others', items: [ '-' ] },
+    { name: 'document', items : [ 'Source'] },
+  ];
+  CKEDITOR.on( 'dialogDefinition', function( ev ) {
+    var dialogName = ev.data.name;
+    var dialogDefinition = ev.data.definition;
+    if ( dialogName == 'link' ) {
+        var targetTab = dialogDefinition.getContents( 'target' );
+        var targetField = targetTab.elements[0].children[0];
+
+        targetField['items'] = [["New Window (_blank)", "_blank"]];
+        targetField['default'] = '_blank';
+      var advancedtab = dialogDefinition.getContents( "advanced" );
+      advancedtab['hidden'] = true;
+
+    } else  if(dialogName === 'image'){
+      var imageInfo = dialogDefinition.getContents('info');
+      console.log('ccc', imageInfo)
+    }
+});
+  CKEDITOR.replace('editor');
+  $('#export').click(() => {
+    const content = CKEDITOR.instances.editor.getData();
+    console.log(content);
+    $('#result').html(CKEDITOR.instances.editor.getData().toString());
+  })
+});
+
+
 
 </script>
 </body>
