@@ -3,7 +3,24 @@ import GridBox from "./components/grid-box";
 import { Zoom } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
 
+import { useQuery } from "react-query";
+import { getPublicUser, getSkills } from "./api";
+import { API_URL } from "./config";
+import Icon from "./icons";
+
 function App() {
+  const { data, isLoading } = useQuery("fetch/getPublicUser", getPublicUser);
+  const { isLoading: skillLoading, data: skillData } = useQuery(
+    "getSkills",
+    getSkills
+  ); // backendden tek bir route'dan gelecek sekilde ayarlanacak
+
+  if (isLoading) {
+    <div className="text-white">Yükleniyor</div>;
+  }
+  if (skillLoading) {
+    <div className="text-white">Yükleniyor</div>;
+  }
   return (
     <div>
       <div className="grid grid-cols-2 gap-x-4">
@@ -14,20 +31,21 @@ function App() {
                 <div className="px-[50px] py-[46px] h-full flex gap-x-6">
                   <div>
                     <img
-                      src="https://picsum.photos/id/15/224/224"
-                      alt=""
+                      src={`${API_URL}${data?.resim}`}
+                      alt={data?.ad_soyad}
+                      width={300}
                       className="rounded-tl-3xl rounded-br-3xl"
                     />
                   </div>
                   <div className="flex flex-col justify-center gap-y-3">
                     <h4 className="text-secondary uppercase text-lg font-semibold">
-                      a fullstack web developer
+                      {data?.unvan}
                     </h4>
                     <h2 className="text-white text-4xl font-semibold">
-                      Burak Çakır
+                      {data?.ad_soyad}
                     </h2>
                     <p className="text-secondary text-md">
-                      I am a Web developer based in Denizli / Turkey.
+                      I am a Web developer based in {data?.adres}.
                     </p>
                   </div>
                 </div>
@@ -81,14 +99,18 @@ function App() {
           <Zoom>
             <GridBox>
               <div className="p-6">
-                <ul className="flex items-center gap-4 mb-2">
-                  <li>React</li>
-                  <li>React Native</li>
-                  <li>SCSS</li>
-                  <li>NodeJS</li>
-                  <li>MSSQL</li>
-                  <li>MYSQL</li>
-                  <li>SQLite</li>
+                <ul className="grid grid-cols-4 gap-4 mb-2">
+                  {skillData?.map((item: any) => {
+                    return (
+                      <div
+                        key={item.id}
+                        className="flex flex-col items-center justify-center"
+                      >
+                        <li className="text-base text-center">{item.name}</li>
+                        <Icon name={item.icon} className="fill-white mt-2" />
+                      </div>
+                    );
+                  })}
                 </ul>
                 <h2 className="uppercase text-secondary mb-2">skills</h2>
                 <h2 className="text-white">My Talents</h2>

@@ -14,22 +14,32 @@ const Sidebar = () => {
         <div>
           <ul>
             <li className="mt-3">
-              <Button variant="soft" fullWidth onClick={() => git("")}>
+              <a
+                href="/"
+                className="!bg-indigo-500 !text-white !w-full px-[5px] py-[6px] block text-center rounded-lg hover:bg-indigo-600"
+                target="_blank"
+              >
                 Arayüz
-              </Button>
+              </a>
             </li>
             <li className="mt-2">
-              <Button variant="soft" fullWidth onClick={() => git("admin")}>
+              <Button
+                variant="soft"
+                className="!bg-indigo-500 !text-white"
+                fullWidth
+                onClick={() => git("admin")}
+              >
                 Ana Sayfa
               </Button>
             </li>
             <li className="mt-2">
               <Button
                 variant="soft"
+                className="!bg-indigo-500 !text-white"
                 fullWidth
-                onClick={() => git("admin/kullanici-ekle")}
+                onClick={() => git("admin/yetenekler")}
               >
-                Kullanıcı Ekle
+                Yetenekler
               </Button>
             </li>
           </ul>

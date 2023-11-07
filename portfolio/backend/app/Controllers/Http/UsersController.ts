@@ -1,32 +1,26 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Database from '@ioc:Adonis/Lucid/Database'
-import Application from '@ioc:Adonis/Core/Application'
 import User from '../../Models/User';
-import Hash from '@ioc:Adonis/Core/Hash'
 // import Socialmedia from '../../Models/Socialmedia';
 
 export default class UsersController {
-  public async user({ response,auth }: HttpContextContract) {
+  public async user({ response,auth }: HttpContextContract) { // admin ekranı için
     try {
       const user = auth.user;
       delete user?.$attributes.parola;
       response.send(user);
     } catch (error) {
       console.log(error);
-
     }
-
-    // response.json({message : "user tokeni karsilastirildi..."});
-    // const user = await User.find(2)
-    // delete user?.$attributes.parola;
-    // // const jwt = await auth.use("api").generate(user, { expiresIn : "1 day"});
-    // response.json({
-    //   user: user,
-    //   // token : jwt
-    // });
   }
 
-  async create({request,response} : HttpContextContract) {
+  public async getPublicUser({ request,response }: HttpContextContract) { // admin ekranı için değil
+    const user = await User.findOrFail(2);
+    delete user?.$attributes.parola;
+    response.send(user);
+  }
+
+  public async create({request,response} : HttpContextContract) {
     try {
       await Database.insertQuery().table("users").insert(request.body())
       response.json({message : "Kayıt işlemi başarılı"})
@@ -35,20 +29,36 @@ export default class UsersController {
     }
   }
 
-  async update({ request, response }: HttpContextContract) {
-    const coverImage = request.file('resim');
-    const { parola } = request.body();
-    const hashedPassword = await Hash.make(parola);
-        if (coverImage) {
-          await coverImage.move(Application.tmpPath('uploads'));
-          await User
-            .query()
-            .where('id', 2)
-            .update({ resim: "/uploads/" + coverImage.clientName, parola : hashedPassword });
-    }
+  async update({ request, response, auth }: HttpContextContract) {
+    const user = auth.user;
+    const id = user.$attributes.id;
+    const updateUser = await User.findOrFail(id);
+    const { ad_soyad, unvan, adres, mail } = request.body();
+    updateUser.ad_soyad = ad_soyad;
+    updateUser.unvan = unvan;
+    updateUser.adres = adres;
+    updateUser.mail = mail;
+    await updateUser.save();
     response.json({
-      message : "Güncelleme işlemi başarıyla tamamlandı!"
+      message: "Kullanıcı güncelleme işlemi başarılı",
+      code : 200
     })
   }
+
+  // async update({ request, response }: HttpContextContract) {
+  //   const coverImage = request.file('resim');
+  //   const { parola } = request.body();
+  //   const hashedPassword = await Hash.make(parola);
+  //       if (coverImage) {
+  //         await coverImage.move(Application.tmpPath('uploads'));
+  //         await User
+  //           .query()
+  //           .where('id', 2)
+  //           .update({ resim: "/uploads/" + coverImage.clientName, parola : hashedPassword });
+  //   }
+  //   response.json({
+  //     message : "Güncelleme işlemi başarıyla tamamlandı!"
+  //   })
+  // }
 
 }

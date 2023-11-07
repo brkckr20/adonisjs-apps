@@ -25,9 +25,24 @@ export const fetchUserInfo = async () => {
     return response.data;
 }
 
-export const test = async () => {
-    const response = await axios.get(`${API_URL}/user`);
-    return console.log(response.data)
+export const getPublicUser = async () => {
+  const response = await axios.get(`${API_URL}/getPublicUser`);
+    return response.data;
+}
+
+export const updateUser = async (userData : any) => {
+  const response = await axios.put(`${API_URL}/user`, userData);
+  return response.data;
+}
+
+export const getSkills = async () => {
+  const response = await axios.get(`${API_URL}/skills`);
+  return response.data;
+}
+
+export const addSkill = async (data: any) => {
+  const response = await axios.post(`${API_URL}/skill`, data);
+  return response.data;
 }
 
 export const loginUser = createAsyncThunk("user/loginUser", async (values : LoginParameters) => {

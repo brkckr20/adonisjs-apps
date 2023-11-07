@@ -7,7 +7,7 @@ import Login from "./pages/Login";
 import ProtectedRoutes from "./ProtectedRoutes";
 import Home from "./pages/auth/Home";
 import AdminLayot from "./layouts/AdminLayot";
-import AddUser from "./pages/auth/AddUser";
+import Skills from "./pages/auth/Skills";
 
 export const router = createBrowserRouter([
   {
@@ -43,10 +43,10 @@ export const router = createBrowserRouter([
             ),
           },
           {
-            path: "/admin/kullanici-ekle",
+            path: "/admin/yetenekler",
             element: (
               <ProtectedRoutes>
-                <AddUser />
+                <Skills />
               </ProtectedRoutes>
             ),
           },
