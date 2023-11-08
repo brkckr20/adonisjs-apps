@@ -14,7 +14,7 @@ export default class UsersController {
     }
   }
 
-  public async getPublicUser({ request,response }: HttpContextContract) { // admin ekranı için değil
+  public async getPublicUser({ response }: HttpContextContract) { // admin ekranı için değil
     const user = await User.findOrFail(2);
     delete user?.$attributes.parola;
     response.send(user);

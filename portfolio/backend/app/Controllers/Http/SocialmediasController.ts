@@ -3,7 +3,14 @@ import Socialmedia from '../../Models/Socialmedia';
 import Database from '@ioc:Adonis/Lucid/Database';
 
 export default class SocialmediasController {
-  public async index({}: HttpContextContract) {}
+  public async index({ response }: HttpContextContract) {
+    try {
+      const socialmedia = await Socialmedia.all();
+      response.send(socialmedia);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   async create({ request, response }: HttpContextContract) {
     console.log(request.body())

@@ -4,7 +4,7 @@ import { Zoom } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
 
 import { useQuery } from "react-query";
-import { getPublicUser, getSkills } from "./api";
+import { getPublicUser, getSkills, getSocialMedias } from "./api";
 import { API_URL } from "./config";
 import Icon from "./icons";
 
@@ -15,17 +15,25 @@ function App() {
     getSkills
   ); // backendden tek bir route'dan gelecek sekilde ayarlanacak
 
+  const { data: mediaList, isLoading: mediaLoading } = useQuery(
+    "getSocialMedias",
+    getSocialMedias
+  );
+
   if (isLoading) {
     <div className="text-white">Yükleniyor</div>;
   }
   if (skillLoading) {
     <div className="text-white">Yükleniyor</div>;
   }
+  if (mediaLoading) {
+    <div className="text-white">Yükleniyor</div>;
+  }
   return (
     <div>
       <div className="grid grid-cols-2 gap-x-4">
         <div className="h-full">
-          <Zoom>
+          <Zoom className="h-full">
             <Link to="/about">
               <GridBox>
                 <div className="px-[50px] py-[46px] h-full flex gap-x-6">
@@ -94,7 +102,7 @@ function App() {
       </div>
 
       {/* 2.row */}
-      <div className="grid grid-cols-2 gap-4 text-white mt-4">
+      <div className="grid grid-cols-2 gap-4 text-white mt-4 h-full">
         <div className="col-span-1">
           <Zoom>
             <GridBox>
@@ -120,18 +128,32 @@ function App() {
         </div>
 
         <div className="col-span-1">
-          <Zoom>
+          <Zoom className="!h-full">
             <GridBox>
-              <div className="p-6">
-                <ul className="flex items-center gap-4 mb-2">
-                  <li>Facebook</li>
-                  <li>Instagram</li>
-                  <li>LinkedIn</li>
-                  <li>Twitter</li>
-                  <li>YouTube</li>
+              <div className="p-6 h-full">
+                <ul className="grid grid-cols-4 gap-4 mb-2">
+                  {mediaList?.map((item: any) => (
+                    <div
+                      key={item.id}
+                      className="flex flex-col items-center justify-center"
+                    >
+                      <li className="text-base text-center">
+                        {item.social_media_name}
+                      </li>
+                      <a href={item.url} target="_blank">
+                        <Icon
+                          name={item.icon}
+                          size={24}
+                          className="fill-white mt-2 hover:scale-125 duration-200 transition-all"
+                        />
+                      </a>
+                    </div>
+                  ))}
                 </ul>
-                <h2 className="uppercase text-secondary mb-2">links</h2>
-                <h2 className="text-white">Social Media</h2>
+                <h2 className="uppercase text-secondary mb-2 text-center">
+                  links
+                </h2>
+                <h2 className="text-white text-center">Social Media</h2>
               </div>
             </GridBox>
           </Zoom>
@@ -170,7 +192,7 @@ function App() {
           </Zoom>
         </div>
         <div className="flex flex-col gap-y-2 h-full">
-          <Zoom>
+          <Zoom className="h-full">
             <div className="h-full">
               <GridBox>
                 <div className="px-[20px] py-[46px]">

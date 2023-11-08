@@ -8,6 +8,11 @@ Route.get('/getPublicUser', 'UsersController.getPublicUser');
 Route.post("/skill", "SkillsController.create").middleware("token");
 Route.get("/skills", "SkillsController.index");
 
+Route.get("/socialmedia", 'SocialmediasController.index');
+Route.post("/social-media", "SocialmediasController.create").middleware("token");
+
+Route.get("/job-and-edu", 'JobAndEdusController.index');
+Route.post("/job-and-edu", 'JobAndEdusController.create').middleware("token");
 
 // daha sonra acilabilir
 // Route.post('/user', 'UsersController.create')
@@ -16,4 +21,4 @@ Route.get("/skills", "SkillsController.index");
 // Login / Register Routes Start
 Route.post("/login", 'AuthController.login');
 
-Route.post("/social-media", "SocialmediasController.create");
+

@@ -8,6 +8,7 @@ import ProtectedRoutes from "./ProtectedRoutes";
 import Home from "./pages/auth/Home";
 import AdminLayot from "./layouts/AdminLayot";
 import Skills from "./pages/auth/Skills";
+import JobAndEdu from "./pages/auth/JobAndEdu";
 
 export const router = createBrowserRouter([
   {
@@ -47,6 +48,14 @@ export const router = createBrowserRouter([
             element: (
               <ProtectedRoutes>
                 <Skills />
+              </ProtectedRoutes>
+            ),
+          },
+          {
+            path: "/admin/is-ve-egitim",
+            element: (
+              <ProtectedRoutes>
+                <JobAndEdu />
               </ProtectedRoutes>
             ),
           },

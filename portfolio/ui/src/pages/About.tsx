@@ -1,8 +1,24 @@
+import { useQuery } from "react-query";
+import { getJobAndEdu, getPublicUser } from "../api";
 import EducationExperienceCard from "../components/education-experience-card";
 import GridBox from "../components/grid-box";
 import { Zoom, Slide } from "react-awesome-reveal";
+import { API_URL } from "../config";
 
 const About = () => {
+  const { isLoading, data } = useQuery("getJobAndEdu", getJobAndEdu);
+  const { data: userData, isLoading: userLoading } = useQuery(
+    "fetch/getPublicUser",
+    getPublicUser
+  );
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  if (userLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="h-full">
       <div className="flex gap-4">
@@ -11,8 +27,9 @@ const About = () => {
             <GridBox isBottomIcon={false}>
               <div className="p-6 rounded-xl">
                 <img
-                  src="https://picsum.photos/id/15/390/390"
+                  src={`${API_URL + userData?.resim}`}
                   alt="profile-resim"
+                  width={550}
                 />
               </div>
             </GridBox>
@@ -31,7 +48,7 @@ const About = () => {
                   </div>
                   <div className="px-6">
                     <h1 className="text-white text-4xl font-medium mb-6">
-                      Burak Çakır
+                      {userData?.ad_soyad}
                     </h1>
                     <p className="text-white mb-6">
                       I am a web developer who enjoys and is passionately
@@ -48,14 +65,18 @@ const About = () => {
         </div>
       </div>
       <div className="flex gap-4 mt-4">
-        <div className="w-full">
-          <Slide direction="left">
+        <div className="w-full h-full">
+          <Slide direction="left" className="h-full">
             <GridBox isBottomIcon={false}>
-              <div className="p-[30px]">
+              <div className="p-[30px] h-full">
                 <h1 className="text-white text-base">EXPERIENCES</h1>
-                <EducationExperienceCard />
-                <EducationExperienceCard />
-                <EducationExperienceCard />
+                {data
+                  .filter((item: any) => {
+                    return item.info.type === "is";
+                  })
+                  .map((i: any, index: number) => (
+                    <EducationExperienceCard key={index} values={i} />
+                  ))}
               </div>
             </GridBox>
           </Slide>
@@ -65,10 +86,13 @@ const About = () => {
             <GridBox isBottomIcon={false}>
               <div className="p-[30px]">
                 <h1 className="text-white text-base uppercase">education</h1>
-                <EducationExperienceCard />
-                <EducationExperienceCard />
-                <EducationExperienceCard />
-                <EducationExperienceCard />
+                {data
+                  .filter((item: any) => {
+                    return item.info.type === "egitim";
+                  })
+                  .map((i: any, index: number) => (
+                    <EducationExperienceCard key={index} values={i} />
+                  ))}
               </div>
             </GridBox>
           </Slide>

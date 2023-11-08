@@ -45,6 +45,22 @@ export const addSkill = async (data: any) => {
   return response.data;
 }
 
+export const getSocialMedias = async () => {
+  const response = await axios.get(`${API_URL}/socialmedia`);
+  return response.data;
+}
+
+
+export const addJobAndEdu = async (data: any) => {
+  const response = await axios.post(`${API_URL}/job-and-edu`, data);
+  return response.data;
+}
+
+export const getJobAndEdu = async () => {
+  const response = await axios.get(`${API_URL}/job-and-edu`);
+  return response.data;
+}
+
 export const loginUser = createAsyncThunk("user/loginUser", async (values : LoginParameters) => {
     const response = await axios.post(`${API_URL}/login`,values);
     return response.data;
