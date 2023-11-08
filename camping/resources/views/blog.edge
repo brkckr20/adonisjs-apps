@@ -32,8 +32,7 @@
           </div>
           <div>
             <h1 class="text-4xl font-semibold">{{post.title}}</h1>
-            <p class="text-[15px] py-4">{{ post.content }}</p>
-
+            <p class="text-[15px] py-4">{{ raw(post.content) }}</p>
           </div>
         </div>
     </div>

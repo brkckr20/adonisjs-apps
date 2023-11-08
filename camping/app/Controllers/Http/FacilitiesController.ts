@@ -26,7 +26,15 @@ export default class FacilitiesController {
 
   public async update({}: HttpContextContract) {}
 
-  public async destroy({ }: HttpContextContract) {
+  public async destroy({request,session,response }: HttpContextContract) {
+    const {id} = request.params();
+    try {
+      const facility = await Facility.findOrFail(id);
+      await facility.delete();
+      session.flash("bilgi", `${id} numaralı kayıt başarıyla silindi`);
+      return response.redirect("/admin/facilities")
+    } catch (error) {
 
+    }
   }
 }

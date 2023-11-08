@@ -16,12 +16,14 @@ Route.get('/logout', 'AuthController.logout');
 // Route.get('/admin/slider', 'PagesController.Slider')
 
 Route.group(() => {
-  Route.get('/admin/slider', 'PagesController.Slider')
-  Route.post('/admin/slider/:id', 'SlidersController.destroy')
-  Route.get("/admin/facilities", 'PagesController.Facilities')
-  Route.get("/admin/blogposts", 'PagesController.BlogPost')
-  Route.get("/admin", 'PagesController.AdminHome')
-  Route.post("/admin/blogposts","PostsController.create")
+  Route.get('/admin/slider', 'PagesController.Slider');
+  Route.post('/admin/slider/:id', 'SlidersController.destroy');
+  Route.get("/admin/facilities", 'PagesController.Facilities');
+  Route.get("/admin/facilities/:id", 'FacilitiesController.destroy');
+  Route.get("/admin/blogposts", 'PagesController.BlogPost');
+  Route.get("/admin/blogposts/:id", 'PostsController.destroy');
+  Route.get("/admin", 'PagesController.AdminHome');
+  Route.post("/admin/blogposts", "PostsController.create");
 }).middleware(['auth']);
 
 

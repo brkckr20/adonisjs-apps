@@ -40,5 +40,15 @@ export default class PostsController {
 
   public async update({}: HttpContextContract) {}
 
-  public async destroy({}: HttpContextContract) {}
+  public async destroy({ request, response, session }: HttpContextContract) {
+    const { id } = request.params();
+    try {
+      const post = await Post.findOrFail(id);
+      await post.delete();
+      session.flash("bilgi", `${id} numaralı kayıt veritabanından silindi!`)
+      return response.redirect("/admin/blogposts")
+    } catch (error) {
+
+    }
+  }
 }

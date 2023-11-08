@@ -1,66 +1,63 @@
 @include('partials/adminheader')
-  <div class="px-10">
-    <fieldset class="border mt-4">
-      <legend class="p-2">Blog Post Ekleme Paneli</legend>
-      <div class="max-w-md p-4">
-        @if(flashMessages.has('bilgi'))
-          <div class="bg-green-400 text-white p-4 mb-4">
-            {{flashMessages.get('bilgi')}}
-          </div>
-        @endif
-        <form id="blogpostform" action="/admin/blogposts" method="POST" enctype="multipart/form-data">
-          <div>
-            <label class="block">Başlık</label>
-            <input class="border w-full outline-none p-1" autocomplete="off" type="text" name="title">
-          </div>
-          {{--  <div>
-            <label class="block">İçerik</label>
-            <textarea class="w-full border outline-none p-1" id="" cols="30" rows="6" name="content"></textarea>
-          </div>  --}}
-          <div>
-            <label class="block">İçerik</label>
-            <div id="editor"></div>
-            <input type="hidden" name="content" value="gizli value" id="hiddenInputBlogPost">
-          </div>
-          <div>
-            <label>Resim</label>
-            <input class="border w-full outline-none p-1" autocomplete="off" type="file" name="post_image">
-          </div>
-          <div>
-            <input
-              class="border w-full outline-none mt-4 p-1 bg-green-600 text-white hover:bg-green-800 duration-200 cursor-pointer"
-              type="submit"
-              value="Kaydet">
-          </div>
-        </form>
-      </div>
-    </fieldset>
-  </div>
-  <div class="px-10">
-    <table class="w-full mt-2 ">
-      <thead class="border bg-slate-100">
-        <tr class="">
-          <th class="p-1" scope="col">Id</th>
-          <th scope="col">Title</th>
-          <th scope="col">Content</th>
-          <th scope="col">Slug</th>
-          <th scope="col">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        @each(item in posts)
-        <tr class="border text-center">
-          <th class="border">{{item.id}}</th>
-          <td class="border">{{item.title}}</td>
-          <td class="border">{{item.content}}</td>
-          <td class="border">{{item.slug}}</td>
-          <td class="border">
-            <a href="/facilities/{{item.id}}" class="bg-red-500 inline-block p-1 px-10 m-1 text-white hover:bg-red-700 duration-200">Sil</a>
-            </td>
-        </tr>
+<div class="px-10">
+  <fieldset class="border mt-4">
+    <legend class="p-2">Blog Post Ekleme Paneli</legend>
+    <div class="max-w-3xl p-4">
+      @if(flashMessages.has('bilgi'))
+        <div class="bg-green-400 text-white p-4 mb-4">
+          {{flashMessages.get('bilgi')}}
+        </div>
+      @endif
+      <form id="blogpostform" action="/admin/blogposts" method="POST" enctype="multipart/form-data">
+        <div>
+          <label class="block">Başlık</label>
+          <input class="border w-full outline-none p-1" autocomplete="off" type="text" name="title">
+        </div>
+        {{--  <div>
+          <label class="block">İçerik</label>
+          <textarea class="w-full border outline-none p-1" id="" cols="30" rows="6" name="content"></textarea>
+        </div>  --}}
+        <div>
+          <label class="block">İçerik</label>
+          <textarea id="summernote" name="content"></textarea>
+        </div>
+        <div>
+          <label>Ana Resim</label>
+          <input class="border w-full outline-none p-1" autocomplete="off" type="file" name="post_image">
+        </div>
+        <div>
+          <input class="border w-full outline-none mt-4 p-1 bg-green-600 text-white hover:bg-green-800 duration-200 cursor-pointer" type="submit" value="Kaydet">
+        </div>
+      </form>
+    </div>
+  </fieldset>
+</div>
+<div class="px-10">
+  <table class="w-full mt-2">
+    <thead class="border bg-slate-100">
+      <tr class="">
+        <th class="p-1" scope="col">Id</th>
+        <th scope="col">Title</th>
+        <th scope="col">Content</th>
+        <th scope="col">Slug</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      @each(item in posts)
+      <tr class="border text-center">
+        <th class="border">{{item.id}}</th>
+        <td class="border">{{item.title}}</td>
+        <td class="border" id="contentAdmin">
+          {{ safe(item.content) }}
+        </td>
+        <td class="border">{{item.slug}}</td>
+        <td class="border">
+          <a href="/admin/blogposts/{{item.id}}" class="bg-red-500 inline-block p-1 px-10 m-1 text-white hover-bg-red-700 duration-200">Sil</a>
+        </td>
+      </tr>
       @endeach
-      </tbody>
-  </div>
+    </tbody>
   </table>
-
+</div>
 @include('partials/adminfooter')
