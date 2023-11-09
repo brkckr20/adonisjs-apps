@@ -375,6 +375,44 @@ const SCSSIcon = ({ size = 24, className }: any) => {
   );
 };
 
+const PhoneIcon = ({ size = 24, className }: any) => {
+  return (
+    <svg
+      stroke="currentColor"
+      //fill={fill}
+      strokeWidth="0"
+      viewBox="0 0 24 24"
+      height={size}
+      width={size}
+      xmlns="http://www.w3.org/2000/svg"
+      className={`${className}`}
+    >
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+    </svg>
+  );
+};
+
+const LocationIcon = ({ size = 24, className }: any) => {
+  return (
+    <svg
+      stroke="currentColor"
+      //fill={fill}
+      strokeWidth="0"
+      viewBox="0 0 24 24"
+      height={size}
+      width={size}
+      xmlns="http://www.w3.org/2000/svg"
+      className={`${className}`}
+    >
+      <path
+        fill="none"
+        strokeWidth="2"
+        d="M12,22 C12,22 4,16 4,10 C4,5 8,2 12,2 C16,2 20,5 20,10 C20,16 12,22 12,22 Z M12,13 C13.657,13 15,11.657 15,10 C15,8.343 13.657,7 12,7 C10.343,7 9,8.343 9,10 C9,11.657 10.343,13 12,13 L12,13 Z"
+      ></path>
+    </svg>
+  );
+};
+
 const Icon = ({ name, size, fill, className }: IProps) => {
   const icons: any = {
     home: HomeIcon,
@@ -396,6 +434,8 @@ const Icon = ({ name, size, fill, className }: IProps) => {
     node: NodeJSIcon,
     mssql: SQLIcon,
     scss: SCSSIcon,
+    phone: PhoneIcon,
+    location: LocationIcon,
   };
 
   const Component = icons[name];

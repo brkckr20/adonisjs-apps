@@ -35,7 +35,6 @@ const Home = () => {
     "getUserData",
     fetchUserInfo
   );
-
   if (isLoading) {
     return <div className="text-white">Yükleniyor</div>;
   }
@@ -88,9 +87,25 @@ const Home = () => {
               <FormControl>
                 <FormLabel className="!text-white">Mail Adresi</FormLabel>
                 <Input
-                  placeholder="Ülke ve şehir giriniz"
+                  placeholder="Mail adresinizi giriniz"
                   {...register("mail")}
                   defaultValue={data.mail}
+                />
+              </FormControl>
+              <FormControl>
+                <FormLabel className="!text-white">Mail Adresi 2</FormLabel>
+                <Input
+                  placeholder="2. Mail adresinizi giriniz"
+                  {...register("mail2")}
+                  defaultValue={data.mail2}
+                />
+              </FormControl>
+              <FormControl>
+                <FormLabel className="!text-white">Telefon</FormLabel>
+                <Input
+                  placeholder="Telefon numaranızı giriniz"
+                  {...register("telefon")}
+                  defaultValue={data.telefon}
                 />
               </FormControl>
             </div>

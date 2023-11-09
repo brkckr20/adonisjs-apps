@@ -28,4 +28,10 @@ export default class User extends BaseModel {
   @column()
   public description : string
 
+  @column()
+  public mail2 : string
+
+  @column()
+  public telefon : string
+
 }

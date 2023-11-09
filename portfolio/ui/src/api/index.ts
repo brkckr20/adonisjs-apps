@@ -61,6 +61,11 @@ export const getJobAndEdu = async () => {
   return response.data;
 }
 
+export const sendMessages = async (data:any) => {
+  const response = await axios.post(`${API_URL}/messages`,data);
+  return response.data;
+}
+
 export const loginUser = createAsyncThunk("user/loginUser", async (values : LoginParameters) => {
     const response = await axios.post(`${API_URL}/login`,values);
     return response.data;

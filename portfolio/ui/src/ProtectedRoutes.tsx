@@ -14,8 +14,6 @@ const ProtectedRoutes: React.FC<IProps> = ({ children }) => {
     (state: RootState) => state.auth.responseCode
   );
 
-  console.log(responseCode);
-
   if (status === "pending") {
     return <div>Yükleniyor</div>;
   }

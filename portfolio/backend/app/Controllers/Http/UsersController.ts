@@ -33,11 +33,13 @@ export default class UsersController {
     const user = auth.user;
     const id = user.$attributes.id;
     const updateUser = await User.findOrFail(id);
-    const { ad_soyad, unvan, adres, mail } = request.body();
+    const { ad_soyad, unvan, adres, mail, mail2, telefon } = request.body();
     updateUser.ad_soyad = ad_soyad;
     updateUser.unvan = unvan;
     updateUser.adres = adres;
     updateUser.mail = mail;
+    updateUser.mail2 = mail2;
+    updateUser.telefon = telefon;
     await updateUser.save();
     response.json({
       message: "Kullanıcı güncelleme işlemi başarılı",
