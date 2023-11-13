@@ -3,7 +3,6 @@ import Icon from "../icons";
 import ContactForm from "../components/contact-form";
 import { useQuery } from "react-query";
 import { fetchUserInfo, getSocialMedias } from "../api";
-
 const Contact = () => {
   const { isLoading, data } = useQuery("getUserData", fetchUserInfo);
   const { data: mediaList, isLoading: mediaLoading } = useQuery(

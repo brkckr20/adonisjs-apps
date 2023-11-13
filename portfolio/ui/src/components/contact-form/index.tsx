@@ -2,13 +2,21 @@ import { useMutation } from "react-query";
 import GridBox from "../grid-box";
 import { useForm } from "react-hook-form";
 import { sendMessages } from "../../api";
+import { Alert } from "@mui/joy";
+import React from "react";
 
 const ContactForm = () => {
   const { register, handleSubmit } = useForm();
+  const [message, setMessage] = React.useState("");
+  const [success, setSuccess] = React.useState(false);
 
   const { mutate } = useMutation(sendMessages, {
     onSuccess(response) {
-      console.log("gelen data", response);
+      setSuccess(true);
+      setMessage(response.message);
+      setTimeout(() => {
+        setSuccess(false);
+      }, 7000);
     },
   });
 
@@ -63,6 +71,13 @@ const ContactForm = () => {
           </form>
         </div>
       </GridBox>
+      {success ? (
+        <div className="mt-4">
+          <Alert variant="solid" color={"neutral"}>
+            {message}
+          </Alert>
+        </div>
+      ) : null}
     </div>
   );
 };
