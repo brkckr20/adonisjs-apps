@@ -19,6 +19,9 @@ export default class Message extends BaseModel {
   @column()
   public isReplied : boolean
 
+  @column()
+  public isReplied2 : string
+
   @column.dateTime({ autoCreate: true })
   public date : DateTime
 }

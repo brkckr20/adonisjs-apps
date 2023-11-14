@@ -37,4 +37,13 @@ export default class MessagesController {
       return response.status(500).json({ error: "Internal Server Error" });
     }
   }
+
+  public async show({ response }: HttpContextContract) {
+    try {
+      const messages = await Message.all();
+      return response.json(messages);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }

@@ -16,6 +16,7 @@ Route.post("/job-and-edu", 'JobAndEdusController.create').middleware("token");
 
 
 Route.post("/messages", 'MessagesController.create');
+Route.get("/messages", 'MessagesController.show');
 // daha sonra acilabilir
 // Route.post('/user', 'UsersController.create')
 

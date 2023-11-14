@@ -66,6 +66,11 @@ export const sendMessages = async (data:any) => {
   return response.data;
 }
 
+export const getMessages = async () => {
+  const response = await axios.get(`${API_URL}/messages`);
+  return response.data;
+}
+
 export const loginUser = createAsyncThunk("user/loginUser", async (values : LoginParameters) => {
     const response = await axios.post(`${API_URL}/login`,values);
     return response.data;

@@ -9,6 +9,7 @@ import Home from "./pages/auth/Home";
 import AdminLayot from "./layouts/AdminLayot";
 import Skills from "./pages/auth/Skills";
 import JobAndEdu from "./pages/auth/JobAndEdu";
+import Messages from "./pages/auth/Messages";
 
 export const router = createBrowserRouter([
   {
@@ -56,6 +57,14 @@ export const router = createBrowserRouter([
             element: (
               <ProtectedRoutes>
                 <JobAndEdu />
+              </ProtectedRoutes>
+            ),
+          },
+          {
+            path: "/admin/mesajlar",
+            element: (
+              <ProtectedRoutes>
+                <Messages />
               </ProtectedRoutes>
             ),
           },

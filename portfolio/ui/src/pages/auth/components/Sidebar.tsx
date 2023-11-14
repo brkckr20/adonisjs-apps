@@ -52,6 +52,16 @@ const Sidebar = () => {
                 İş ve Eğitim
               </Button>
             </li>
+            <li className="mt-2">
+              <Button
+                variant="soft"
+                className="!bg-indigo-500 !text-white"
+                fullWidth
+                onClick={() => git("admin/mesajlar")}
+              >
+                Mesajlar
+              </Button>
+            </li>
           </ul>
         </div>
       </div>
