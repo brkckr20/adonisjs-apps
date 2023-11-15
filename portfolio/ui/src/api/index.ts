@@ -71,6 +71,11 @@ export const getMessages = async () => {
   return response.data;
 }
 
+export const updateMessage = async (id:any) => {
+  const response = await axios.put(`${API_URL}/messages/${id}`);
+  return response.data;
+}
+
 export const loginUser = createAsyncThunk("user/loginUser", async (values : LoginParameters) => {
     const response = await axios.post(`${API_URL}/login`,values);
     return response.data;

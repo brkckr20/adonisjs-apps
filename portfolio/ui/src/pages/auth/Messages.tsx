@@ -1,14 +1,20 @@
 import { Button, Table } from "@mui/joy";
-import { useQuery } from "react-query";
-import { getMessages } from "../../api";
+import { useQuery, useMutation, useQueryClient } from "react-query";
+import { getMessages, updateMessage } from "../../api";
 
 const Messages = () => {
   const { isLoading, data } = useQuery("getMessages", getMessages);
+  const queryClient = useQueryClient();
+  const { mutate: updateMessageMutate } = useMutation(updateMessage, {
+    onSuccess() {
+      queryClient.invalidateQueries("getMessage");
+    },
+  });
 
   if (isLoading) {
     return <div className="text-white p-2">Yükleniyor..</div>;
   }
-  console.log(data);
+
   return (
     <div className="p-2">
       <div>
@@ -37,10 +43,15 @@ const Messages = () => {
                 <td>{item.email}</td>
                 <td>{item.subject}</td>
                 <td>{item.message}</td>
-                <td>{item.date}</td>
-                <td>{item.isReplied ? "evet" : "hayır"}</td>
+                <td>{formatISODateToCustomFormat(item.created_at)}</td>
+                <td>{item.isReplied === "evet" ? "Evet" : "Hayır"}</td>
                 <td className="text-center">
-                  <Button size="sm" color="success" variant="solid">
+                  <Button
+                    size="sm"
+                    onClick={() => updateMessageMutate(item.id)}
+                    color="success"
+                    variant="solid"
+                  >
                     Gncll
                   </Button>
                 </td>
@@ -54,3 +65,9 @@ const Messages = () => {
 };
 
 export default Messages;
+
+function formatISODateToCustomFormat(isoDate: any) {
+  const parts = isoDate.split("T")[0].split("-");
+  const formattedDate = `${parts[2]}.${parts[1]}.${parts[0]}`;
+  return formattedDate;
+}

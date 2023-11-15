@@ -1,6 +1,7 @@
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
 import { DateTime } from 'luxon'
-export default class Message extends BaseModel {
+import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+
+export default class Support extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
@@ -17,14 +18,9 @@ export default class Message extends BaseModel {
   public message : string
 
   @column()
-  public isReplied : boolean
+  public isReplied : string
 
   @column.dateTime({ autoCreate: true })
-  public date: DateTime
+  public createdAt: DateTime
 
-  @column()
-  public isReplied2: string
-
-  @column()
-  public isReplied3 : string
 }

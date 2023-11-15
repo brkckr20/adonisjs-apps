@@ -10,8 +10,8 @@ export default class extends BaseSchema {
       table.string("email").notNullable();
       table.string("subject").notNullable();
       table.string("message").notNullable();
-      table.boolean("isReplied").defaultTo(false);
       table.timestamp('date', { useTz: true })
+      table.boolean("isReplied").defaultTo(false);
     })
   }
 

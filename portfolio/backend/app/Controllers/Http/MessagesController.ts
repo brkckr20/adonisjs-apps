@@ -1,20 +1,24 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Database from '@ioc:Adonis/Lucid/Database';
-import Message from '../../Models/Message';
 import Mail from '@ioc:Adonis/Addons/Mail';
+import Support from '../../Models/Support';
 
 export default class MessagesController {
   public async create({ request, response }: HttpContextContract) {
     try {
       const { name, email, subject, message } = request.body();
-      const mail = await Message.findBy("email", email);
+      const mail = await Support.findBy("email", email);
 
       if (mail) {
         if (!mail.isReplied) {
           return response.json({ message: "Cevaplanmamış mailleriniz var!", code: 400});
         }
       }
-      await Database.insertQuery().table("messages").insert(request.body());
+      const veri = {
+        isReplied: "hayir",
+        ...request.body(),
+      }
+      await Database.insertQuery().table("supports").insert(veri);
       const html = `
         <div>
           <p>Name: ${name}</p>
@@ -40,10 +44,22 @@ export default class MessagesController {
 
   public async show({ response }: HttpContextContract) {
     try {
-      const messages = await Message.all();
+      const messages = await Database.from("supports").select("id","name","email","subject","message","isReplied","created_at");
       return response.json(messages);
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  public async update({ request, response }: HttpContextContract) {
+    try {
+      const { id } = request.params();
+      const message = await Support.firstOrFail(id);
+      message.isReplied = "evet";
+      await message.save();
+      console.log(message);
+    } catch (error) {
+
     }
   }
 }
