@@ -10,6 +10,7 @@ import AdminLayot from "./layouts/AdminLayot";
 import Skills from "./pages/auth/Skills";
 import JobAndEdu from "./pages/auth/JobAndEdu";
 import Messages from "./pages/auth/Messages";
+import Credential from "./pages/Credential";
 
 export const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/credential",
+        element: <Credential />,
       },
       {
         path: "/login",

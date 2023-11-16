@@ -74,15 +74,17 @@ function App() {
           <div className="grid grid-cols-2 gap-3 h-full">
             <Zoom>
               <GridBox>
-                <div className="p-4">
-                  <img
-                    src="https://wpriverthemes.com/gridx/wp-content/uploads/2023/04/sign.png"
-                    alt="signature"
-                    className="mb-4"
-                  />
-                  <h2 className="uppercase text-secondary">more about me</h2>
-                  <h2 className="text-white">Credentials</h2>
-                </div>
+                <Link to="/credential">
+                  <div className="p-4">
+                    <img
+                      src="https://wpriverthemes.com/gridx/wp-content/uploads/2023/04/sign.png"
+                      alt="signature"
+                      className="mb-4"
+                    />
+                    <h2 className="uppercase text-secondary">more about me</h2>
+                    <h2 className="text-white">Credentials</h2>
+                  </div>
+                </Link>
               </GridBox>
               <GridBox>
                 <div className="p-6">
