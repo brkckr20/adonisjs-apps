@@ -57,7 +57,9 @@ export default class MessagesController {
       const message = await Support.firstOrFail(id);
       message.isReplied = "evet";
       await message.save();
-      console.log(message);
+      response.json({
+        message : "Kayit islemi basarili"
+      });
     } catch (error) {
 
     }
