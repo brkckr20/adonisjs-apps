@@ -3,12 +3,12 @@ import AddJobAndEdu from "./components/AddJobAndEdu";
 import { useState } from "react";
 import { useQuery } from "react-query";
 import { getJobAndEdu } from "../../api";
+import { useNavigate } from "react-router-dom";
 
 const JobAndEdu = () => {
   const [open, setOpen] = useState<boolean>(false);
-
   const { isLoading, data } = useQuery("getJobAndEdu", getJobAndEdu);
-
+  const navigate = useNavigate();
   if (isLoading) {
     return <div className="text-white p-2">Yükleniyor..</div>;
   }
@@ -55,7 +55,14 @@ const JobAndEdu = () => {
                   <Button size="sm" color="danger" variant="plain">
                     Sil
                   </Button>
-                  <Button size="sm" color="success" variant="solid">
+                  <Button
+                    size="sm"
+                    color="success"
+                    variant="solid"
+                    onClick={() =>
+                      navigate(`/admin/is-ve-egitim/${item.info.id}`)
+                    }
+                  >
                     Gncll
                   </Button>
                 </td>

@@ -29,7 +29,19 @@ export default class JobAndEdusController {
 
   public async store({}: HttpContextContract) {}
 
-  public async show({}: HttpContextContract) {}
+  public async show({ request, response }: HttpContextContract) {
+    try {
+      const id = request.params().id;
+      const jau = await JobAndEdu.find(id);
+      const data = {
+        info: jau?.$attributes,
+        extra : jau?.$extras
+      }
+      response.json(data);
+    } catch (error) {
+
+    }
+  }
 
   public async edit({}: HttpContextContract) {}
 

@@ -11,6 +11,7 @@ import Skills from "./pages/auth/Skills";
 import JobAndEdu from "./pages/auth/JobAndEdu";
 import Messages from "./pages/auth/Messages";
 import Credential from "./pages/Credential";
+import EditJobAndEdu from "./pages/auth/EditJobAndEdu";
 
 export const router = createBrowserRouter([
   {
@@ -62,6 +63,14 @@ export const router = createBrowserRouter([
             element: (
               <ProtectedRoutes>
                 <JobAndEdu />
+              </ProtectedRoutes>
+            ),
+          },
+          {
+            path: "/admin/is-ve-egitim/:id",
+            element: (
+              <ProtectedRoutes>
+                <EditJobAndEdu />
               </ProtectedRoutes>
             ),
           },

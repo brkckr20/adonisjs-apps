@@ -1,16 +1,27 @@
 import { Table, Button } from "@mui/joy";
 import AddSkill from "./components/AddSkill";
 import { useState } from "react";
-import { useQuery } from "react-query";
-import { getSkills } from "../../api";
+import { useQuery, useMutation, useQueryClient } from "react-query";
+import { getSkills, deleteSkill } from "../../api";
 
 const Skills = () => {
   const [open, setOpen] = useState(false);
-
+  const queryClient = useQueryClient();
+  const mutation = useMutation(deleteSkill, {
+    onSuccess() {
+      queryClient.invalidateQueries("getSkills");
+    },
+  });
   const { isLoading, data } = useQuery("getSkills", getSkills);
+
   if (isLoading) {
-    return <div>Yükleniyor</div>;
+    return <div className="text-white">Yükleniyor</div>;
   }
+
+  const handleDelete = (id: number) => {
+    mutation.mutate(id);
+  };
+
   return (
     <div className="p-2 text-white">
       <div className="text-end mb-2">
@@ -30,7 +41,6 @@ const Skills = () => {
           <thead className="text-center">
             <tr>
               <th>Yetenek Adı</th>
-              <th>Resim</th>
               <th>Icon</th>
               <th className="flex items-center w-full justify-center">İşlem</th>
             </tr>
@@ -40,10 +50,14 @@ const Skills = () => {
               return (
                 <tr key={item.id}>
                   <td>{item.name}</td>
-                  <td>{item.resim}</td>
                   <td>{item.icon}</td>
                   <td className="text-center">
-                    <Button size="sm" color="danger" variant="plain">
+                    <Button
+                      size="sm"
+                      color="danger"
+                      variant="plain"
+                      onClick={() => handleDelete(item.id)}
+                    >
                       Sil
                     </Button>
                   </td>

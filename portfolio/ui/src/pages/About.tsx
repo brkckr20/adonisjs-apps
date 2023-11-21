@@ -19,6 +19,8 @@ const About = () => {
     return <div>Loading...</div>;
   }
 
+  console.log(data);
+
   return (
     <div className="h-full">
       <div className="flex gap-4">

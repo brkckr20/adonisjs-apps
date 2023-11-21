@@ -25,4 +25,7 @@ export default class JobAndEdu extends BaseModel {
   @column()
   public place : string
 
+  @column()
+  public description : string
+
 }

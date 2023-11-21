@@ -45,6 +45,11 @@ export const addSkill = async (data: any) => {
   return response.data;
 }
 
+export const deleteSkill = async (id: number) => {
+  const response = await axios.delete(`${API_URL}/skill/${id}`);
+  return response.data;
+}
+
 export const getSocialMedias = async () => {
   const response = await axios.get(`${API_URL}/socialmedia`);
   return response.data;
@@ -58,6 +63,11 @@ export const addJobAndEdu = async (data: any) => {
 
 export const getJobAndEdu = async () => {
   const response = await axios.get(`${API_URL}/job-and-edu`);
+  return response.data;
+}
+
+export const getOneJobAndEdu = async (id :any) => { 
+  const response = await axios.get(`${API_URL}/job-and-edu/${id}`);
   return response.data;
 }
 

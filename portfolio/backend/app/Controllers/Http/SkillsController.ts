@@ -33,5 +33,14 @@ export default class SkillsController {
 
   public async update({}: HttpContextContract) {}
 
-  public async destroy({}: HttpContextContract) {}
+  public async destroy({ request, response }: HttpContextContract) {
+    const {id} = request.params();
+    try {
+      const skill = await Skill.firstOrFail(id);
+      await skill.delete();
+      response.json({message : "Silme işlemi başarılı", code : 200})
+    } catch (error) {
+
+    }
+  }
 }
