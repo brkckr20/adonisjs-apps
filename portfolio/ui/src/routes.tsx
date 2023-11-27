@@ -12,6 +12,7 @@ import JobAndEdu from "./pages/auth/JobAndEdu";
 import Messages from "./pages/auth/Messages";
 import Credential from "./pages/Credential";
 import EditJobAndEdu from "./pages/auth/EditJobAndEdu";
+import Work from "./pages/Work";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: "/credential",
         element: <Credential />,
+      },
+      {
+        path: "/works",
+        element: <Work />,
       },
       {
         path: "/login",
