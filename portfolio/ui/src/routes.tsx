@@ -13,6 +13,7 @@ import Messages from "./pages/auth/Messages";
 import Credential from "./pages/Credential";
 import EditJobAndEdu from "./pages/auth/EditJobAndEdu";
 import Work from "./pages/Work";
+import AdminWork from "./pages/auth/Work";
 
 export const router = createBrowserRouter([
   {
@@ -84,6 +85,14 @@ export const router = createBrowserRouter([
             element: (
               <ProtectedRoutes>
                 <Messages />
+              </ProtectedRoutes>
+            ),
+          },
+          {
+            path: "/admin/projeler",
+            element: (
+              <ProtectedRoutes>
+                <AdminWork />
               </ProtectedRoutes>
             ),
           },
