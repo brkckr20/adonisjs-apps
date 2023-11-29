@@ -47,20 +47,4 @@ export default class UsersController {
     })
   }
 
-  // async update({ request, response }: HttpContextContract) {
-  //   const coverImage = request.file('resim');
-  //   const { parola } = request.body();
-  //   const hashedPassword = await Hash.make(parola);
-  //       if (coverImage) {
-  //         await coverImage.move(Application.tmpPath('uploads'));
-  //         await User
-  //           .query()
-  //           .where('id', 2)
-  //           .update({ resim: "/uploads/" + coverImage.clientName, parola : hashedPassword });
-  //   }
-  //   response.json({
-  //     message : "Güncelleme işlemi başarıyla tamamlandı!"
-  //   })
-  // }
-
 }

@@ -1,10 +1,13 @@
 import { Link, useLocation } from "react-router-dom";
+import logo from "../../assets/logo.png";
 
 const Header = () => {
   const location = useLocation();
   return (
     <div className="text-white max-w-custom mx-auto flex justify-between items-center py-4">
-      <div className="text-3xl font-semibold">BURAK</div>
+      <div className="text-3xl font-semibold">
+        <img width={150} src={logo} alt="logo" />
+      </div>
       <ul className="flex items-center justify-center gap-8">
         <li
           className={` hover:text-white ${

@@ -86,6 +86,15 @@ export const updateMessage = async (id:any) => {
   return response.data;
 }
 
+export const addWork = async (data:any) => {
+  const response = await axios.post(`${API_URL}/work`,data);
+  return response.data;
+}
+export const getWorks = async () => {
+  const response = await axios.get(`${API_URL}/work`);
+  return response.data;
+}
+
 export const loginUser = createAsyncThunk("user/loginUser", async (values : LoginParameters) => {
     const response = await axios.post(`${API_URL}/login`,values);
     return response.data;
