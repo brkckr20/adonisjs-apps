@@ -5,7 +5,15 @@ import Work from '../../Models/Work';
 
 
 export default class WorksController {
-  public async index({}: HttpContextContract) {}
+  public async index({ request,response }: HttpContextContract) {
+    try {
+      const params = request.params();
+      const work = await Work.findByOrFail("slug", params.slug, params);
+      return response.json(work);
+    } catch (error) {
+      return response.status(404).json({ error: 'Work not found' });
+    }
+  }
 
   public async create({ request }: HttpContextContract) {
     try {

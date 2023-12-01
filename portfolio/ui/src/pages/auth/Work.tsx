@@ -72,6 +72,7 @@ const Work = () => {
             Ana Resim Seç
             <VisuallyHiddenInput {...register("mainImage")} type="file" />
           </Button>
+
           <Button
             component="label"
             role={undefined}

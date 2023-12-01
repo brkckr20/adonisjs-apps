@@ -95,6 +95,11 @@ export const getWorks = async () => {
   return response.data;
 }
 
+export const getWork = async (slug : string | undefined) => {
+  const response = await axios.get(`${API_URL}/work/${slug}`);
+  return response.data;
+}
+
 export const loginUser = createAsyncThunk("user/loginUser", async (values : LoginParameters) => {
     const response = await axios.post(`${API_URL}/login`,values);
     return response.data;

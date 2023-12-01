@@ -29,6 +29,9 @@ export default class Work extends BaseModel {
   public image4 : string
 
   @column()
-  public year : string
+  public year: string
+
+  @column()
+  public slug : string
 
 }

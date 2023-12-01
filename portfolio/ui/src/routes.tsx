@@ -14,6 +14,7 @@ import Credential from "./pages/Credential";
 import EditJobAndEdu from "./pages/auth/EditJobAndEdu";
 import Work from "./pages/Work";
 import AdminWork from "./pages/auth/Work";
+import WorkDetail from "./pages/WorkDetail";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
       {
         path: "/works",
         element: <Work />,
+      },
+      {
+        path: "/works/:slug",
+        element: <WorkDetail />,
       },
       {
         path: "/login",

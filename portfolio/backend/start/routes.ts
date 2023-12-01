@@ -24,6 +24,7 @@ Route.put("/messages/:id", 'MessagesController.update');
 
 Route.post("/work", 'WorksController.create').middleware("token");
 Route.get("/work", 'WorksController.show');
+Route.get("/work/:slug", 'WorksController.index');
 
 // Login / Register Routes Start
 Route.post("/login", 'AuthController.login');
