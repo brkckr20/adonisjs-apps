@@ -34,8 +34,13 @@ const Contact = () => {
               </div>
               <div>
                 <h5 className="text-gray-500">MAIL US</h5>
-                <p>{data?.mail}</p>
-                <p>{data?.mail2}</p>
+                <p>
+                  <a href={`mailto:${data?.mail}`}>{data?.mail}</a>
+                </p>
+                <p>
+                  {" "}
+                  <a href={`mailto:${data?.mail2}`}>{data?.mail2}</a>
+                </p>
               </div>
             </div>
             <div className="flex gap-4 mb-12">

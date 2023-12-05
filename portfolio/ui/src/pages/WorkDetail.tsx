@@ -46,11 +46,43 @@ const WorkDetail = () => {
                 </div>
               </GridBox>
               <GridBox isBottomIcon={false}>
-                <div className="p-6">2022</div>
+                <div className="p-6 flex w-full items-center justify-center h-full">
+                  <h1 className="text-7xl">2022</h1>
+                </div>
               </GridBox>
             </div>
           </div>
         </GridBox>
+      </div>
+      <div className="grid grid-cols-2 gap-4 mt-10">
+        <div>
+          <img
+            className="w-full rounded-lg"
+            src={`${API_URL}/uploads/work/${data.image1}`}
+            alt="image"
+          />
+        </div>
+        <div>
+          <img
+            className="w-full rounded-lg"
+            src={`${API_URL}/uploads/work/${data.image2}`}
+            alt="image"
+          />
+        </div>
+        <div>
+          <img
+            className="w-full rounded-lg"
+            src={`${API_URL}/uploads/work/${data.image3}`}
+            alt="image"
+          />
+        </div>
+        <div>
+          <img
+            className="w-full rounded-lg"
+            src={`${API_URL}/uploads/work/${data.image4}`}
+            alt="image"
+          />
+        </div>
       </div>
     </div>
   );

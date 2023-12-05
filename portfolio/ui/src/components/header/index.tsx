@@ -25,7 +25,9 @@ const Header = () => {
         </li>
         <li
           className={` hover:text-white ${
-            location.pathname === "/works" ? "text-white" : "text-secondary"
+            location.pathname.startsWith("/works")
+              ? "text-white"
+              : "text-secondary"
           } duration-300 ease-in-out`}
         >
           <Link to="/works">Works</Link>
