@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useQuery } from "react-query";
 import { getJobAndEdu } from "../../api";
 import { useNavigate } from "react-router-dom";
+import { months } from "../../utils";
 
 const JobAndEdu = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -47,9 +48,9 @@ const JobAndEdu = () => {
                 <td>{item.info.type}</td>
                 <td>{item.info.name}</td>
                 <td>{item.info.place}</td>
-                <td>{item.extra.startedMonth}</td>
+                <td>{months[item.extra.startedMonth - 1]}</td>
                 <td>{item.extra.startedYear}</td>
-                <td>{item.extra.endMonth}</td>
+                <td>{months[item.extra.endMonth - 1]}</td>
                 <td>{item.extra.endYear}</td>
                 <td className="text-center">
                   <Button size="sm" color="danger" variant="plain">
