@@ -72,6 +72,19 @@ const Sidebar = () => {
                 Projeler
               </Button>
             </li>
+            <li className="mt-2">
+              <Button
+                variant="soft"
+                className="!bg-indigo-500 !text-white"
+                fullWidth
+                onClick={() => {
+                  localStorage.removeItem("token");
+                  git("login");
+                }}
+              >
+                Çıkış Yap
+              </Button>
+            </li>
           </ul>
         </div>
       </div>

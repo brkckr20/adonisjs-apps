@@ -3,9 +3,8 @@ import User from '../../Models/User';
 import { LoginMessages } from '../../../interfaces'
 
 export default class AuthController {
-  public async login({request,response,auth}: HttpContextContract ) {
+  public async login({ request, response, auth }: HttpContextContract) {
     try {
-
       const username = request.body().username;
       const password = request.body().password;
       const user = await User.findBy('username', username);
@@ -24,7 +23,7 @@ export default class AuthController {
         return;
       }
 
-      const jwt = await auth.use("api").generate(user, { expiresIn: "1 day" });
+      const jwt = await auth.use("api").generate(user);
       return response.json({
         token: jwt,
         code : 200

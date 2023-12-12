@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import GridBox from "../components/grid-box";
 import Button from "@mui/joy/Button";
 import Alert from "@mui/joy/Alert";
@@ -14,18 +14,17 @@ const Login = () => {
 
   const [username, setUsername] = useState<string>("burakcakir");
   const [password, setPassword] = useState<string>("brkckr20");
+  const [isLoading, setIsloading] = useState<boolean>(false);
 
   const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsloading(true);
     await dispatch(loginUser({ username, password }));
     if (auth.isLoggedIn) {
+      setIsloading(false);
       navigate("/admin");
     }
   };
-
-  // useEffect(() => {
-  //   console.log(auth);
-  // }, [auth]);
 
   return (
     <div className="w-full h-full">
@@ -56,7 +55,7 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <Button type="submit" className="!w-full">
+            <Button loading={isLoading} type="submit" className="!w-full">
               Login
             </Button>
           </form>
